@@ -35,7 +35,7 @@
                       [slidesToScroll]="roadmapConfig.slidesToScroll">
             <sdk-slide *ngFor="let key of roadmap">
                 <div class="roadmap-slide">
-                    <a class="point">{{key.point}}</a>
+                    <img [src]="key.image" [alt]="key.point" />
                     <ul class="content">
                         <li *ngFor="let v of key.content">
                             <p>{{v}}</p>

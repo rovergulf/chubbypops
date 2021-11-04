@@ -77,9 +77,11 @@ export class HomeComponent implements OnInit {
 
     roadmap: any[] = [{
         point: '10%',
+        image: '/assets/images/10.svg',
         content: ['We will randomly airdrop Chubby Pops NFT to owners'],
     }, {
         point: '25%',
+        image: '/assets/images/25.svg',
         content: [
             'Good deeds bank fills with 5 ETH',
             'Exclusive NFTs will be raffled among community members',
@@ -87,6 +89,7 @@ export class HomeComponent implements OnInit {
         ]
     }, {
         point: '50%',
+        image: '/assets/images/50.svg',
         content: [
             'Good deeds bank fills with 10 ETH',
             'We develop merchandise and give away it among the community.',
@@ -94,6 +97,7 @@ export class HomeComponent implements OnInit {
         ]
     }, {
         point: '75%',
+        image: '/assets/images/75.svg',
         content: [
             'Good deeds bank fills with 15 ETH',
             'Exclusive NFTs will be raffled among community members',
@@ -101,6 +105,7 @@ export class HomeComponent implements OnInit {
         ]
     }, {
         point: '100%',
+        image: '/assets/images/100.svg',
         content: [
             'We add 20 ETH more to the good deeds bankand transfer it to the selected charity',
             'Rare NFTs will be raffled among community members',
@@ -108,6 +113,7 @@ export class HomeComponent implements OnInit {
         ]
     }, {
         point: '???',
+        image: '/assets/images/q.svg',
         content: [
             'All along the way we will listen to the community to be better. ' +
             'As a bird that learns new words every day we want to grow and progress ' +
