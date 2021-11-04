@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import "~ngx-slice-kit/lib/core/styles/defaults";
+@import "~ngx-slice-kit/lib/core/styles/core";
+
+html, body {
+    width: 100vw;
+    position: relative;
+    font-family: 'Fredoka One', cursive;
+    font-size: 14px;
+    color: var(--regular-text);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+span.spacer {
+    padding: 8px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: .5;
+    cursor: default;
+}

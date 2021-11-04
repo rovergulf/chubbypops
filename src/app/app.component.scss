@@ -1,0 +1,8 @@
+@import "~ngx-slice-kit/lib/core/styles/flexbox";
+
+main {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+    min-height: 100vh;
+    background-color: #0d2638;
+}

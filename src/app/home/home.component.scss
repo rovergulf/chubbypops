@@ -1,0 +1,127 @@
+@import "~ngx-slice-kit/lib/core/styles/flexbox";
+
+@mixin flex-row {
+    @extend .flex-row;
+    @extend .layout-center-center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+@mixin flex-column {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+    max-width: 1200px;
+    width: 100%;
+}
+
+main {
+    @extend .flex-column;
+    @extend .layout-start-center;
+
+    color: #fff;
+
+    #title {
+        @include flex-row;
+        margin-top: 100px;
+
+        h1 {
+            font-size: 128px;
+            line-height: 180px;
+        }
+
+        img {
+            max-height: 180px;
+        }
+    }
+
+    #mint {
+        @include flex-row;
+        margin-top: 100px;
+
+        img {
+            max-width: 480px;
+            border-radius: 24px;
+        }
+
+        & > .spacer {
+            padding: 24px;
+        }
+
+        .catch {
+            @extend .flex-column;
+            @extend .layout-start-center;
+            @extend .flex-grow-1;
+            padding: 16px;
+            max-width: 580px;
+
+            h3 {
+                font-size: 60px;
+                line-height: 72px;
+            }
+
+            p {
+                font-size: 40px;
+                line-height: 60px;
+                margin-bottom: 24px;
+            }
+
+            button {
+                border-radius: 50px;
+                background-color: #ff9ede;
+                height: 100px;
+                width: 360px;
+                font-family: 'Fredoka One', cursive;
+                color: #fff;
+                font-size: 40px;
+                line-height: 100px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    #story {
+        @include flex-column;
+        margin-top: 100px;
+
+        img {
+            width: 100%;
+            border-radius: 80px;
+        }
+
+        h1 {
+            font-size: 80px;
+            line-height: 96px;
+        }
+
+        p {
+            font-size: 40px;
+            line-height: 60px;
+        }
+    }
+
+    #roadmap {
+        @include flex-column;
+        margin-top: 100px;
+    }
+
+    #rare {
+        @include flex-column;
+        margin-top: 100px;
+    }
+
+    #preview {
+        margin-top: 100px;
+        width: 100%;
+        @extend .flex-row;
+        @extend .layout-center-center;
+    }
+
+    #faq {
+        @include flex-column;
+    }
+
+    #about {
+        @include flex-row;
+    }
+
+}

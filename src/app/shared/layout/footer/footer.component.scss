@@ -1,0 +1,21 @@
+@import "~ngx-slice-kit/lib/core/styles/flexbox";
+
+footer {
+    @extend .flex-row;
+    @extend .layout-center-center;
+    color: #fff;
+    padding: 32px;
+
+    h3 {
+        font-weight: normal;
+    }
+
+    .community {
+        @extend .flex-row;
+        @extend .layout-center-center;
+
+        li {
+            margin: 4px;
+        }
+    }
+}
