@@ -3,10 +3,15 @@
 header {
     @extend .flex-row;
     @extend .layout-center-center;
-    display: flex;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 96px;
     background: #fff;
     width: 100%;
+    padding: 0 16px;
 
     .content {
         @extend .flex-row;
@@ -42,6 +47,10 @@ header {
     .community {
         a {
             margin: 0 8px;
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
     }
 }

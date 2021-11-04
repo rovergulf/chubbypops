@@ -5,4 +5,8 @@ main {
     @extend .layout-start-stretch;
     min-height: 100vh;
     background-color: #0d2638;
+
+    section {
+        padding: 96px 0 96px 0;
+    }
 }

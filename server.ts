@@ -1,12 +1,50 @@
 import 'zone.js/dist/zone-node';
-
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
+import { Request, Response } from 'express';
+import * as path from 'path';
 import { join } from 'path';
+import * as fs from 'fs';
+import { existsSync } from 'fs';
 
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
-import { existsSync } from 'fs';
+
+/**
+ * window and document polyfills
+ */
+import * as domino from 'domino';
+import * as prometheus from 'prom-client';
+
+const templateA = fs
+    .readFileSync(path.join('dist/chubby-pops/browser', 'index.html'))
+    .toString();
+const win: any = domino.createWindow(templateA);
+win.Object = Object;
+win.Math = Math;
+
+global['window'] = win;
+global['document'] = win.document;
+// @ts-ignore
+global['branch'] = null;
+// @ts-ignore
+global['object'] = win.object;
+global['HTMLElement'] = win.HTMLElement;
+global['navigator'] = win.navigator;
+global['localStorage'] = win.localStorage;
+global['sessionStorage'] = win.localStorage;
+
+/**
+ * Prometheus Metrics
+ */
+// Create a Registry which registers the metrics
+const register = new prometheus.Registry();
+// Add a default label which is added to all metrics
+register.setDefaultLabels({
+    app: 'nft-gen'
+});
+// collect default metrics with registry
+prometheus.collectDefaultMetrics({register});
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -22,8 +60,35 @@ export function app(): express.Express {
     server.set('view engine', 'html');
     server.set('views', distFolder);
 
-    // Example Express Rest API endpoints
-    // server.get('/api/**', (req, res) => { });
+    // Express Rest DevOps required API endpoints
+    server.get('/metrics', (req: Request, res: Response) => {
+        res.set('Content-Type', register.contentType);
+        register.metrics().then(metrics => {
+            res.send(metrics);
+        }).catch(err => {
+            console.error('Unable to collect metrics', err);
+            res.send('failed to collect metrics');
+        });
+    });
+
+    server.get('/metrics/json', (req: Request, res: Response) => {
+        res.set('Content-Type', 'application/json');
+        register.getMetricsAsJSON().then(metrics => {
+            res.send(metrics);
+        }).catch(err => {
+            console.error('Unable to collect metrics', err);
+            res.send('failed to collect metrics');
+        });
+    });
+
+    server.get('/health', (req: Request, res: Response) => {
+        res.set('Content-Type', 'application/json');
+        res.send({
+            healthy: true,
+            timestamp: new Date(),
+            message: `I'm fine, thanks`
+        });
+    });
 
     // Serve static files from /browser
     server.get('*.*', express.static(distFolder, {
@@ -32,7 +97,13 @@ export function app(): express.Express {
 
     // All regular routes use the Universal engine
     server.get('*', (req, res) => {
-        res.render(indexHtml, {req, providers: [{provide: APP_BASE_HREF, useValue: req.baseUrl}]});
+        res.render(indexHtml, {
+            req, providers: [
+                {provide: APP_BASE_HREF, useValue: req.baseUrl},
+                {provide: 'REQUEST', useValue: req},
+                {provide: 'RESPONSE', useValue: res},
+            ]
+        });
     });
 
     return server;

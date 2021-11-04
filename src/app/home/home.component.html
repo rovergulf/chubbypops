@@ -21,9 +21,110 @@
             cute chubby bird find all the eggs,save the babies! T___T The chubby bird will never forget it!</p>
         <img alt="waves" src="/assets/images/wawes.gif"/>
     </section>
-    <section id="roadmap"></section>
-    <section id="rare"></section>
-    <section id="preview"></section>
-    <section id="faq"></section>
-    <section id="about"></section>
+
+
+    <!-- Roadmap -->
+    <section id="roadmap">
+        <h1>Roadmap</h1>
+
+        <sdk-carousel [arrows]="roadmapConfig.arrows"
+                      [offset]="roadmapConfig.offset"
+                      [timeout]="roadmapConfig.timeout"
+                      [infinity]="roadmapConfig.infinity"
+                      [slidesToShow]="roadmapConfig.slidesToShow"
+                      [slidesToScroll]="roadmapConfig.slidesToScroll">
+            <sdk-slide *ngFor="let key of roadmap">
+                <div class="roadmap-slide">
+                    <a class="point">{{key.point}}</a>
+                    <ul class="content">
+                        <li *ngFor="let v of key.content">
+                            <p>{{v}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </sdk-slide>
+        </sdk-carousel>
+    </section>
+
+    <!-- Rarometer -->
+    <section id="rare">
+
+        <div class="header">
+            <h1>Rarometer</h1>
+            <div class="line"></div>
+        </div>
+
+        <div class="preview">
+            <ul class="info">
+                <li *ngFor="let prop of currentChubby.props">
+                    <img [class.hidden]="!prop.value" src="/assets/images/check.png" [alt]="prop.value" />
+                    <p>{{prop.name}}</p>
+                </li>
+            </ul>
+            <span class="spacer"></span>
+            <div class="demo">
+                <img [src]="getImageUrl(currentChubby.image)" [alt]="currentChubby.name" />
+                <span class="spacer"></span>
+                <p>Every chick is cool and chubby! Remember it!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slider -->
+    <!--    <section id="slider">-->
+    <!--        <div class="carousel-container">-->
+<!--                <sdk-carousel [dots]="config.dots"-->
+<!--                              [offset]="config.offset"-->
+<!--                              [timeout]="config.timeout"-->
+<!--                              [infinity]="config.infinity"-->
+<!--                              [pauseByHover]="config.pauseByHover"-->
+<!--                              [slidesToShow]="config.slidesToShow"-->
+<!--                              [slidesToScroll]="config.slidesToScroll">-->
+<!--                    <sdk-slide *ngFor="let url of posterUrls">-->
+<!--                        <div class="carousel-slide">-->
+<!--                            <img [src]="url" alt="slide-img">-->
+<!--                        </div>-->
+<!--                    </sdk-slide>-->
+<!--                </sdk-carousel>-->
+    <!--        </div>-->
+    <!--    </section>-->
+
+    <!-- FAQ -->
+    <section id="faq">
+        <h1>FAQ</h1>
+        <ul>
+            <li>
+                <h3>When does minting begin?</h3>
+                <p>Minting will start...</p>
+            </li>
+            <li>
+                <h3>How many Chubby Pops will be minted?</h3>
+                <p>There’re a total 10k birdies to be minted</p>
+            </li>
+            <li>
+                <h3>How much do they cost to mint?</h3>
+                <p>Chubby Pops will only cost a flat 0.x eth + gas mint</p>
+            </li>
+            <li>
+                <h3>Is there a limit on how many Chubby Pops I can mint?</h3>
+                <p>There’sa limit of 10 Chubby Pops per transaction</p>
+            </li>
+            <li>
+                <h3>When is the reveal?</h3>
+                <p>Chubby Pops will be revealed when all 10k birdies are minted</p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- TEAM -->
+    <section id="about">
+        <h1>Chubby team</h1>
+        <ul>
+            <li *ngFor="let t of team">
+                <img [src]="t.image" [alt]="t.name" />
+                <h3>{{t.name}}</h3>
+                <p>{{t.role}}</p>
+            </li>
+        </ul>
+    </section>
 </main>
