@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+REGISTRY_IMAGE="europe-docker.pkg.dev/rovergulf/main/chubby-pops"
 VERSION=v$(cat ./package.json | grep version | awk '{print $2}' | tr -d \"\,)
 
 echo "[$(date +%T)] start deploying ${REGISTRY_IMAGE}:${VERSION} image"
