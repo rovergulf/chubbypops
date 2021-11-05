@@ -1,0 +1,120 @@
+@import "~ngx-slice-kit/lib/core/styles/flexbox";
+@import "../../../mixins";
+
+section {
+    @include flex-column;
+
+    .header {
+        @extend .flex-row;
+        @extend .layout-start-center;
+
+        h1 {
+            @include h1-main;
+        }
+
+        .spacer {
+            padding: 8px 16px;
+        }
+
+        .rare-meter {
+            @extend .flex-row;
+            @extend .layout-start-center;
+            @extend .flex-grow-1;
+
+            img {
+                transition: all .3s ease;
+                z-index: 1;
+                height: 112px;
+                margin-left: -56px;
+            }
+
+            .line {
+                z-index: 1;
+                background: linear-gradient(270deg, #FFF3A9 0%, #FFB4E5 82.41%);
+                height: 20px;
+                border-radius: 10px;
+                transition: all .3s ease;
+
+                &.none {
+                    width: 15%;
+                }
+
+                .common {
+                    width: 33%;
+                }
+
+                .epic {
+                    width: 55%;
+                }
+
+                .rare {
+                    width: 75%;
+                }
+
+                .super {
+                    width: 100%;
+
+                    img {
+                        right: -22px;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    .preview {
+        @extend .flex-row;
+        @extend .layout-start-stretch;
+        padding-top: 64px;
+
+        .info {
+            @extend .flex-column;
+            @extend .layout-start-stretch;
+            background-color: rgb(30, 49, 64);
+            max-width: 580px;
+            width: 100%;
+            border-radius: 40px;
+            padding: 64px 32px;
+
+            li {
+                @extend .flex-row;
+                @extend .layout-start-center;
+
+                &:not(:last-child) {
+                    margin-bottom: 32px;
+                }
+
+                img {
+                    margin-right: 32px;
+                }
+
+                img.hidden {
+                    opacity: 0;
+                }
+
+                p {
+                    font-size: 40px;
+                    line-height: 48px;
+                }
+            }
+        }
+
+        .demo {
+            img {
+                max-width: 580px;
+                width: 100%;
+                margin-bottom: 24px;
+                border-radius: 40px;
+            }
+
+            p {
+                @include azeret;
+                font-size: 32px;
+                line-height: 40px;
+            }
+        }
+    }
+
+}

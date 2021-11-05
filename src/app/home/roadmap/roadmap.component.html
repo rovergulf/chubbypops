@@ -1,0 +1,21 @@
+<section>
+    <h1>Roadmap</h1>
+
+    <sdk-carousel [arrows]="config.arrows"
+                  [infinity]="config.infinity"
+                  [offset]="config.offset"
+                  [slidesToScroll]="config.slidesToScroll"
+                  [slidesToShow]="config.slidesToShow"
+                  [timeout]="config.timeout">
+        <sdk-slide *ngFor="let key of roadmap">
+            <div class="roadmap-slide">
+                <img [alt]="key.point" [src]="key.image"/>
+                <ul class="content">
+                    <li *ngFor="let v of key.content">
+                        <p>{{v}}</p>
+                    </li>
+                </ul>
+            </div>
+        </sdk-slide>
+    </sdk-carousel>
+</section>

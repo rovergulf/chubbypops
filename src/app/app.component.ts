@@ -19,22 +19,24 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         if (isPlatformBrowser(this.platformId)) {
-            this.web3.getAccounts().subscribe({
-                next: (res: any) => {
-                    this.alerts.success({
-                        message: `You are logged to Chubby Pops!`,
-                        positionX: 'center',
-                        positionY: 'bottom',
-                    });
-                },
-                error: (err: any) => {
-                    this.alerts.error({
-                        message: 'Failed to authorize using Web3',
-                        positionX: 'center',
-                        positionY: 'bottom',
-                    });
-                }
-            });
+            if (this.web3.eth) {
+                this.web3.getAccounts().subscribe({
+                    next: (res: any) => {
+                        this.alerts.success({
+                            message: `You are logged to Chubby Pops!`,
+                            positionX: 'center',
+                            positionY: 'bottom',
+                        });
+                    },
+                    error: (err: any) => {
+                        this.alerts.error({
+                            message: 'Failed to authorize using Web3',
+                            positionX: 'center',
+                            positionY: 'bottom',
+                        });
+                    }
+                });
+            }
         }
     }
 

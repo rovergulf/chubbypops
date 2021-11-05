@@ -1,130 +1,35 @@
 <main>
-    <section id="title">
+    <header>
         <h1>Chubby</h1>
         <img alt="chubby-face" src="/assets/images/frame_90.png"/>
         <h1>Pops</h1>
-    </section>
-    <section id="mint">
-        <div class="image">
-            <img alt="Very cute Chubby" src="/assets/images/chubby_pink.gif"/>
-        </div>
-        <span class="spacer"></span>
-        <div class="catch">
-            <h3>What's the catch?</h3>
-            <p>Chubby Pops are an NFT collection of 10k unique and plump chicks (･θ･)</p>
-            <button (click)="mint()" class="mint-button">Mint now!</button>
-        </div>
-    </section>
-    <section id="story">
-        <h1>The Story ( T θ T )</h1>
-        <p>The bird's nest was washed away by the big wave. All unhatched chicks were lost in the open sea. Help the
-            cute chubby bird find all the eggs,save the babies! T___T The chubby bird will never forget it!</p>
-        <img alt="waves" src="/assets/images/wawes.gif"/>
-    </section>
+    </header>
+
+    <!-- Mint -->
+    <app-minter></app-minter>
+    <span class="divider" id="story"></span>
+
+    <!-- Story -->
+    <app-story></app-story>
+    <span class="divider" id="roadmap"></span>
 
 
     <!-- Roadmap -->
-<!--    <section id="roadmap">-->
-<!--        <h1>Roadmap</h1>-->
-
-<!--        <sdk-carousel [arrows]="roadmapConfig.arrows"-->
-<!--                      [offset]="roadmapConfig.offset"-->
-<!--                      [timeout]="roadmapConfig.timeout"-->
-<!--                      [infinity]="roadmapConfig.infinity"-->
-<!--                      [slidesToShow]="roadmapConfig.slidesToShow"-->
-<!--                      [slidesToScroll]="roadmapConfig.slidesToScroll">-->
-<!--            <sdk-slide *ngFor="let key of roadmap">-->
-<!--                <div class="roadmap-slide">-->
-<!--                    <img [src]="key.image" [alt]="key.point" />-->
-<!--                    <ul class="content">-->
-<!--                        <li *ngFor="let v of key.content">-->
-<!--                            <p>{{v}}</p>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            </sdk-slide>-->
-<!--        </sdk-carousel>-->
-<!--    </section>-->
+    <app-roadmap></app-roadmap>
+    <span class="divider" id="rare"></span>
 
     <!-- Rarometer -->
-    <section id="rare">
-
-        <div class="header">
-            <h1>Rarometer</h1>
-            <div class="line"></div>
-        </div>
-
-        <div class="preview">
-            <ul class="info">
-                <li *ngFor="let prop of currentChubby.props">
-                    <img [class.hidden]="!prop.value" src="/assets/images/check.png" [alt]="prop.value" />
-                    <p>{{prop.name}}</p>
-                </li>
-            </ul>
-            <span class="spacer"></span>
-            <div class="demo">
-                <img [src]="getImageUrl(currentChubby.image)" [alt]="currentChubby.name" />
-                <span class="spacer"></span>
-                <p>Every chick is cool and chubby! Remember it!</p>
-            </div>
-        </div>
-    </section>
+    <app-rarity></app-rarity>
+    <span class="divider" id="faq"></span>
 
     <!-- Slider -->
-    <!--    <section id="slider">-->
-    <!--        <div class="carousel-container">-->
-<!--                <sdk-carousel [dots]="config.dots"-->
-<!--                              [offset]="config.offset"-->
-<!--                              [timeout]="config.timeout"-->
-<!--                              [infinity]="config.infinity"-->
-<!--                              [pauseByHover]="config.pauseByHover"-->
-<!--                              [slidesToShow]="config.slidesToShow"-->
-<!--                              [slidesToScroll]="config.slidesToScroll">-->
-<!--                    <sdk-slide *ngFor="let url of posterUrls">-->
-<!--                        <div class="carousel-slide">-->
-<!--                            <img [src]="url" alt="slide-img">-->
-<!--                        </div>-->
-<!--                    </sdk-slide>-->
-<!--                </sdk-carousel>-->
-    <!--        </div>-->
-    <!--    </section>-->
+<!--   <app-preview></app-preview>-->
+<!--    <span class="divider" id="faq"></span>-->
 
     <!-- FAQ -->
-    <section id="faq">
-        <h1>FAQ</h1>
-        <ul>
-            <li>
-                <h3>When does minting begin?</h3>
-                <p>Minting will start...</p>
-            </li>
-            <li>
-                <h3>How many Chubby Pops will be minted?</h3>
-                <p>There’re a total 10k birdies to be minted</p>
-            </li>
-            <li>
-                <h3>How much do they cost to mint?</h3>
-                <p>Chubby Pops will only cost a flat 0.x eth + gas mint</p>
-            </li>
-            <li>
-                <h3>Is there a limit on how many Chubby Pops I can mint?</h3>
-                <p>There’sa limit of 10 Chubby Pops per transaction</p>
-            </li>
-            <li>
-                <h3>When is the reveal?</h3>
-                <p>Chubby Pops will be revealed when all 10k birdies are minted</p>
-            </li>
-        </ul>
-    </section>
+    <app-faq></app-faq>
+    <span class="divider" id="about"></span>
 
     <!-- TEAM -->
-    <section id="about">
-        <h1>Chubby team</h1>
-        <ul>
-            <li *ngFor="let t of team">
-                <img [src]="t.image" [alt]="t.name" />
-                <h3>{{t.name}}</h3>
-                <p>{{t.role}}</p>
-            </li>
-        </ul>
-    </section>
+    <app-team></app-team>
 </main>

@@ -1,0 +1,51 @@
+@import "~ngx-slice-kit/lib/core/styles/flexbox";
+@import "../../../mixins";
+
+section {
+    @include flex-row;
+
+    img {
+        max-width: 480px;
+        border-radius: 24px;
+    }
+
+    & > .spacer {
+        padding: 24px;
+    }
+
+    .catch {
+        @extend .flex-column;
+        @extend .layout-start-center;
+        @extend .flex-grow-1;
+        padding: 16px;
+        max-width: 580px;
+
+        h3 {
+            font-size: 60px;
+            line-height: 72px;
+        }
+
+        p {
+            font-size: 40px;
+            line-height: 60px;
+            margin-bottom: 24px;
+        }
+
+        button {
+            border-radius: 50px;
+            background-color: #ff9ede;
+            height: 100px;
+            width: 360px;
+            font-family: 'Fredoka One', cursive;
+            color: #fff;
+            font-size: 40px;
+            line-height: 100px;
+            cursor: pointer;
+            transition: all .3s ease;
+
+            &:hover {
+                opacity: .75;
+            }
+        }
+    }
+}

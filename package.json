@@ -1,6 +1,6 @@
 {
   "name": "chubby-pops",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -53,6 +53,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ngx-slice-kit": "^0.11.0",
-    "typescript": "~4.4.4"
+    "typescript": "~4.4.4",
+    "webpack-sources": "^3.2.1"
   }
 }

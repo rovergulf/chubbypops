@@ -1,0 +1,26 @@
+<section>
+
+    <div class="header">
+        <h1>Rarometer</h1>
+        <span class="spacer"></span>
+        <div class="rare-meter">
+            <div [ngClass]="currentChubby.rarity" class="line"></div>
+            <img [alt]="currentChubby.name" src="/assets/images/frame_90.png"/>
+        </div>
+    </div>
+
+    <div class="preview">
+        <ul class="info">
+            <li *ngFor="let prop of currentChubby.props">
+                <img [alt]="prop.value" [class.hidden]="!prop.value" src="/assets/images/check.png"/>
+                <p>{{prop.name}}</p>
+            </li>
+        </ul>
+        <span class="spacer"></span>
+        <div class="demo">
+            <img [alt]="currentChubby.name" [src]="getImageUrl(currentChubby.image)"/>
+            <span class="spacer"></span>
+            <p>Every chick is cool and chubby! Remember it!</p>
+        </div>
+    </div>
+</section>

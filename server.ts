@@ -41,7 +41,7 @@ global['sessionStorage'] = win.localStorage;
 const register = new prometheus.Registry();
 // Add a default label which is added to all metrics
 register.setDefaultLabels({
-    app: 'nft-gen'
+    app: 'chubby-pops'
 });
 // collect default metrics with registry
 prometheus.collectDefaultMetrics({register});

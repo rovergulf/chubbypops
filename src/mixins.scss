@@ -1,0 +1,23 @@
+
+@mixin flex-row {
+    @extend .flex-row;
+    @extend .layout-center-center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+@mixin flex-column {
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+    max-width: 1200px;
+    width: 100%;
+}
+
+@mixin h1-main {
+    font-size: 80px;
+    line-height: 96px;
+}
+
+@mixin azeret {
+    font-family: 'Azeret Mono', monospace;
+}

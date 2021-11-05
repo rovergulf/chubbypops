@@ -1,0 +1,28 @@
+@import "~ngx-slice-kit/lib/core/styles/flexbox";
+@import "../../../mixins";
+
+section {
+    @include flex-column;
+
+    & > img {
+        width: 100%;
+        border-radius: 80px;
+    }
+
+    h1 {
+        @include h1-main;
+        @extend .flex-row;
+        @extend .layout-start-center;
+        white-space: nowrap;
+
+        img {
+            margin-left: 32px;
+            height: 48px;
+        }
+    }
+
+    p {
+        font-size: 40px;
+        line-height: 60px;
+    }
+}

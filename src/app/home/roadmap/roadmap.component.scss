@@ -1,0 +1,58 @@
+@import "~ngx-slice-kit/lib/core/styles/flexbox";
+@import "../../../mixins";
+
+section {
+    @include flex-column;
+
+    h1 {
+        @include h1-main;
+    }
+
+    sdk-carousel {
+
+    }
+
+    sdk-slide {
+        padding: 20px;
+    }
+
+    .roadmap-slide {
+        @extend .flex-row;
+        @extend .layout-start-start;
+        padding: 32px 64px;
+        background-color: rgb(30, 49, 64);
+        border-radius: 40px;
+        height: 100%;
+
+        a {
+            font-size: 32px;
+            line-height: 40px;
+        }
+
+        ul {
+            @extend .flex-column;
+            margin-left: 32px;
+
+            li {
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 16px;
+                    left: -16px;
+                    height: 8px;
+                    width: 8px;
+                    border-radius: 50%;
+                    background-color: #fff;
+                }
+            }
+
+            p {
+                font-size: 32px;
+                line-height: 40px;
+            }
+        }
+    }
+
+}

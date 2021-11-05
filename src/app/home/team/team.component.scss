@@ -1,0 +1,47 @@
+@import "~ngx-slice-kit/lib/core/styles/flexbox";
+@import "../../../mixins";
+
+section {
+    @include flex-column;
+
+    h1 {
+        @include h1-main;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        @extend .flex-row;
+        @extend .layout-space-between-center;
+
+        li {
+            @extend .flex-column;
+            @extend .layout-start-stretch;
+
+            &:not(:first-child) {
+                margin-left: 16px;
+            }
+
+            &:not(:last-child) {
+                margin-right: 16px;
+            }
+
+            img {
+                margin-bottom: 20px;
+            }
+
+            h3 {
+                @include azeret;
+                margin-top: 32px;
+                font-size: 36px;
+                line-height: 54px;
+            }
+
+            p {
+                @include azeret;
+                font-size: 32px;
+                line-height: 48px;
+                color: rgba(255, 255, 255, .6);
+            }
+        }
+    }
+}

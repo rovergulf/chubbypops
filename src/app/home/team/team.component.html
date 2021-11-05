@@ -1,0 +1,10 @@
+<section>
+    <h1>Chubby team</h1>
+    <ul>
+        <li *ngFor="let t of team">
+            <img [alt]="t.name" [src]="t.image"/>
+            <h3>{{t.name}}</h3>
+            <p>{{t.role}}</p>
+        </li>
+    </ul>
+</section>
