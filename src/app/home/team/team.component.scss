@@ -11,19 +11,18 @@ section {
 
     ul {
         @extend .flex-row;
-        @extend .layout-space-between-center;
+        @extend .layout-center-center;
+        @extend .flex-wrap;
+
+        @media screen and (min-width: 1200px) {
+            justify-content: space-between;
+        }
 
         li {
             @extend .flex-column;
             @extend .layout-start-stretch;
 
-            &:not(:first-child) {
-                margin-left: 16px;
-            }
-
-            &:not(:last-child) {
-                margin-right: 16px;
-            }
+            margin: 8px;
 
             img {
                 margin-bottom: 20px;
@@ -41,6 +40,34 @@ section {
                 font-size: 32px;
                 line-height: 48px;
                 color: rgba(255, 255, 255, .6);
+            }
+
+            @media screen and (max-width: 1200px) {
+                h3 {
+                    font-size: 32px;
+                    line-height: 48px;
+                }
+                p {
+                    font-size: 28px;
+                    line-height: 32px;
+                }
+            }
+
+            @media screen and (max-width: 960px) {
+                h3 {}
+                p {}
+            }
+
+            @media screen and (max-width: 720px) {
+                h3 {
+                    font-size: 24px;
+                    line-height: 32px;
+                }
+
+                p {
+                    font-size: 20px;
+                    line-height: 28px;
+                }
             }
         }
     }

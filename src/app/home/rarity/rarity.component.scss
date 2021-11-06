@@ -1,5 +1,6 @@
 @import "~ngx-slice-kit/lib/core/styles/flexbox";
 @import "../../../mixins";
+@import "../../../variables";
 
 section {
     @include flex-column;
@@ -7,10 +8,7 @@ section {
     .header {
         @extend .flex-row;
         @extend .layout-start-center;
-
-        h1 {
-            @include h1-main;
-        }
+        @extend .flex-wrap;
 
         .spacer {
             padding: 8px 16px;
@@ -67,7 +65,6 @@ section {
     .preview {
         @extend .flex-row;
         @extend .layout-start-stretch;
-        padding-top: 64px;
 
         .spacer {
             padding: 20px;
@@ -106,6 +103,9 @@ section {
         }
 
         .demo {
+            @extend .flex-column;
+            @extend .layout-start-center;
+
             img {
                 max-width: 580px;
                 width: 100%;
@@ -117,6 +117,23 @@ section {
                 @include azeret;
                 font-size: 32px;
                 line-height: 40px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+
+        .preview {
+            justify-content: center;
+
+            .info {
+                order: 2;
+            }
+
+            .demo {
+                order: 1;
+                -ms-flex-order: 1;
+                margin-bottom: 20px;
             }
         }
     }

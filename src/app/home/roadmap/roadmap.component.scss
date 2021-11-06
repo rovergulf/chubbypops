@@ -1,12 +1,12 @@
 @import "~ngx-slice-kit/lib/core/styles/flexbox";
 @import "../../../mixins";
+@import "../../../variables";
 
 section {
-    @include flex-column;
-
-    h1 {
-        @include h1-main;
-    }
+    @extend .flex-column;
+    @extend .layout-start-stretch;
+    width: 100%;
+    max-width: 1200px;
 
     sdk-carousel {
 
@@ -23,11 +23,6 @@ section {
         background-color: rgb(30, 49, 64);
         border-radius: 40px;
         height: 100%;
-
-        a {
-            font-size: 32px;
-            line-height: 40px;
-        }
 
         ul {
             @extend .flex-column;
@@ -47,12 +42,9 @@ section {
                     background-color: #fff;
                 }
             }
-
-            p {
-                font-size: 32px;
-                line-height: 40px;
-            }
         }
     }
+
+
 
 }

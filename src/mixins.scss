@@ -2,15 +2,15 @@
 @mixin flex-row {
     @extend .flex-row;
     @extend .layout-center-center;
-    max-width: 1200px;
     width: 100%;
+    max-width: 1200px;
 }
 
 @mixin flex-column {
     @extend .flex-column;
     @extend .layout-start-stretch;
-    max-width: 1200px;
     width: 100%;
+    max-width: 1200px;
 }
 
 @mixin h1-main {

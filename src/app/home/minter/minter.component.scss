@@ -1,5 +1,6 @@
 @import "~ngx-slice-kit/lib/core/styles/flexbox";
 @import "../../../mixins";
+@import "../../../variables";
 
 section {
     @include flex-row;
@@ -15,15 +16,10 @@ section {
 
     .catch {
         @extend .flex-column;
-        @extend .layout-start-center;
+        @extend .layout-start-start;
         @extend .flex-grow-1;
         padding: 16px;
         max-width: 580px;
-
-        h3 {
-            font-size: 60px;
-            line-height: 72px;
-        }
 
         p {
             font-size: 40px;
@@ -32,6 +28,7 @@ section {
         }
 
         button {
+            align-self: center;
             border-radius: 50px;
             background-color: #ff9ede;
             height: 100px;
@@ -46,6 +43,16 @@ section {
             &:hover {
                 opacity: .75;
             }
+        }
+    }
+
+
+    @media screen and (max-width: 1200px) {
+        .catch button {
+            height: 80px;
+            line-height: 80px;
+            width: 320px;
+            font-size: 36px;
         }
     }
 }

@@ -1,22 +1,19 @@
 @import "~ngx-slice-kit/lib/core/styles/flexbox";
 @import "../../mixins";
+@import "../../variables";
 
 main {
     @extend .flex-column;
     @extend .layout-start-center;
+    padding: 96px 0;
 
     color: #fff;
 
-    section {
-        margin-top: 96px;
-    }
-
-    header {
+    .header {
         @include flex-row;
         padding: 96px 0;
 
         h1 {
-            @include h1-main;
             background: -webkit-linear-gradient(270deg, #FFF2A9 0%, #FF71CE 90.48%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;

@@ -1,16 +1,20 @@
 @import "~ngx-slice-kit/lib/core/styles/flexbox";
 @import "../../../mixins";
+@import "../../../variables";
 
 section {
     @include flex-column;
+    overflow: hidden;
+    border-radius: 0 0 80px 80px;
 
     & > img {
-        width: 100%;
-        border-radius: 80px;
+        width: calc(100% + 2px);
+        width: -webkit-calc(100% + 2px);
+        width: -moz-calc(100% + 2px);
+        margin-right: -2px;
     }
 
     h1 {
-        @include h1-main;
         @extend .flex-row;
         @extend .layout-start-center;
         white-space: nowrap;
@@ -24,5 +28,12 @@ section {
     p {
         font-size: 40px;
         line-height: 60px;
+    }
+
+    @media screen and (max-width: 1200px) {
+        p {
+            font-size: 32px;
+            line-height: 48px;
+        }
     }
 }

@@ -7,10 +7,6 @@ section {
     border-radius: 80px;
     background-color: rgb(30, 49, 64);
 
-    h1 {
-        @include h1-main;
-    }
-
     h3 {
         @include azeret;
         margin-top: 32px;
@@ -24,4 +20,39 @@ section {
         line-height: 48px;
         color: rgba(255, 255, 255, .6);
     }
+
+    @media screen and (max-width: 1200px) {
+        h3 {
+            font-size: 36px;
+            line-height: 52px;
+        }
+
+        p {
+            font-size: 28px;
+            line-height: 40px;
+        }
+    }
+
+    @media screen and (max-width: 960px) {
+        h3 {
+            font-size: 32px;
+            line-height: 48px;
+        }
+
+        p {
+            font-size: 24px;
+            line-height: 36px;
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        h3 {
+            line-height: 40px;
+        }
+
+        p {
+            line-height: 32px;
+        }
+    }
+
 }

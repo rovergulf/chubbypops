@@ -1,6 +1,6 @@
 {
   "name": "chubby-pops",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +9,7 @@
     "test": "ng test",
     "dev:ssr": "ng run chubby-pops:serve-ssr",
     "serve:ssr": "node dist/chubby-pops/server/main.js",
-    "build:ssr": "ng build && ng run chubby-pops:server",
+    "build:ssr": "ng build --configuration production && ng run chubby-pops:server",
     "prerender": "ng run chubby-pops:prerender"
   },
   "private": true,
