@@ -8,7 +8,6 @@ section {
     .header {
         @extend .flex-row;
         @extend .layout-start-center;
-        @extend .flex-wrap;
 
         .spacer {
             padding: 8px 16px;
@@ -27,6 +26,7 @@ section {
             }
 
             .line {
+                position: relative;
                 z-index: 1;
                 background: linear-gradient(270deg, #FFF3A9 0%, #FFB4E5 82.41%);
                 height: 20px;
@@ -65,6 +65,7 @@ section {
     .preview {
         @extend .flex-row;
         @extend .layout-start-stretch;
+        padding-top: 32px;
 
         .spacer {
             padding: 20px;
@@ -123,20 +124,36 @@ section {
 
     @media screen and (max-width: 1200px) {
 
+        .header {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: flex-start;
+
+            .rare-meter {
+                width: 100%;
+            }
+        }
+
         .preview {
             flex-direction: column;
             justify-content: center;
             align-content: center;
             align-items: center;
+            padding-bottom: 16px;
 
             .info {
+                order: 3;
+            }
+
+            .spacer {
                 order: 2;
+                padding: 12px;
             }
 
             .demo {
                 order: 1;
                 -ms-flex-order: 1;
-                margin-bottom: 20px;
             }
         }
     }

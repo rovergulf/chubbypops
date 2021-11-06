@@ -29,3 +29,15 @@ main {
         padding: 48px;
     }
 }
+
+@media screen and (max-width: 1200px) {
+    main .header img {
+        max-height: 136px;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    main .header img {
+        max-height: 96px;
+    }
+}
