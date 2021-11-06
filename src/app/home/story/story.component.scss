@@ -14,10 +14,10 @@ section {
         @extend .flex-row;
         @extend .layout-start-center;
         white-space: nowrap;
+        margin-bottom: 32px;
 
         img {
             margin-left: 32px;
-            height: 48px;
         }
     }
 

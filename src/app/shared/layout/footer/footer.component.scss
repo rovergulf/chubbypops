@@ -23,6 +23,10 @@ footer {
 
         a {
             margin: 4px;
+            display: flex;
+            img {
+                height: 50px;
+            }
         }
     }
 }

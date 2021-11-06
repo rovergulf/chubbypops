@@ -69,6 +69,10 @@ section {
         @extend .layout-start-stretch;
         padding-top: 64px;
 
+        .spacer {
+            padding: 20px;
+        }
+
         .info {
             @extend .flex-column;
             @extend .layout-start-stretch;
