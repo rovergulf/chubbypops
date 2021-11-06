@@ -12,6 +12,9 @@ This repository contains public website and contract source code for [Chubby Pop
 ### Collection site:  
 https://chubbypops.net
 
+### Discord server
+https://discord.gg/GTaDN8ucQB
+
 ### Marketplaces
 - TBD
 
