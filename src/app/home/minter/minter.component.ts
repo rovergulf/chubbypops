@@ -22,12 +22,12 @@ export class MinterComponent implements OnInit {
                 message: `Install MetaMask browser extension at first`,
                 positionX: 'center',
             });
+        } else {
+            this.alerts.error({
+                title: `Work in progress`,
+                message: `WIP: Sale is not started yet!`
+            });
         }
-
-        this.alerts.error({
-            title: `Work in progress`,
-            message: `WIP: Sale is not started yet!`
-        });
     }
 
     ngOnInit(): void {
