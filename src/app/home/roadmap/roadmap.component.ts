@@ -16,7 +16,7 @@ export class RoadmapComponent implements OnInit {
 
     config = {
         arrows: true,
-        offset: 0,
+        offset: 32,
         slidesToScroll: 1,
         slidesToShow: 1,
         pauseByHover: true,

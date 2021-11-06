@@ -16,26 +16,21 @@
                 <p [class.rare]="prop.rare">{{prop.name}}</p>
             </li>
         </ul>
-        <div class="spacer">
-            <span class="clip"></span>
-            <span class="clip"></span>
-            <span class="clip"></span>
-        </div>
+        <div class="spacer"></div>
         <div class="demo">
             <img [alt]="currentChubby.name" [src]="currentChubby.image" />
+            <span class="spacer"></span>
+            <div class="rare-nav">
+                <img src="assets/images/arr.svg" class="prev" alt="Previous"
+                     (click)="prev()" [class.disabled]="hasPrev" />
+                <p>{{currentChubby.name}}</p>
+                <img src="assets/images/arr.svg" class="next" alt="Next"
+                     (click)="next()" [class.disabled]="hasNext" />
+            </div>
+            <span class="spacer"></span>
+            <p>Every chick is cool and chubby! Remember it!</p>
         </div>
     </div>
 
-    <span class="spacer"></span>
-
-    <div class="rare-nav">
-        <img src="assets/images/arr.svg" class="prev" alt="Previous"
-             (click)="prev()" [class.disabled]="hasPrev" />
-        <p>{{currentChubby.name}}</p>
-        <img src="assets/images/arr.svg" class="next" alt="Next"
-             (click)="next()" [class.disabled]="hasNext" />
-    </div>
-    <span class="spacer"></span>
-    <p>Every chick is cool and chubby! Remember it!</p>
 
 </section>

@@ -69,18 +69,7 @@ section {
         padding: 32px 0;
 
         .spacer {
-            position: relative;
-            z-index: 5;
-            width: 40px;
-            @extend .flex-column;
-            @extend .layout-space-around-center;
-
-            .clip {
-                width: 64px;
-                border-radius: 8px;
-                height: 16px;
-                background: #fff;
-            }
+            padding: 20px;
         }
 
         .info {
@@ -121,48 +110,49 @@ section {
 
         .demo {
             @extend .flex-column;
-            @extend .layout-start-center;
-            background-color: #ff9ede;
-            border-radius: 40px;
+            @extend .layout-start-stretch;
             overflow: hidden;
             max-width: 578px;
             width: 100%;
 
-            img {
+            &>img {
                 width: 100%;
                 max-width: 578px;
+                border-radius: 40px;
             }
 
             p {
                 font-size: 32px;
                 line-height: 40px;
             }
-        }
-    }
 
-    .rare-nav {
-        @extend .flex-row;
-        @extend .layout-space-between-center;
-        @include fredoka;
-        white-space: nowrap;
 
-        img {
-            height: 32px;
-            cursor: pointer;
-            transition: all .3s ease;
+            .rare-nav {
+                @extend .flex-row;
+                @extend .layout-space-between-center;
+                @include fredoka;
+                white-space: nowrap;
 
-            &:hover {
-                opacity: .75;
+                img {
+                    height: 32px;
+                    cursor: pointer;
+                    transition: all .3s ease;
+
+                    &:hover {
+                        opacity: .75;
+                    }
+
+
+                    &.next {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                p {
+                    margin: 0 16px;
+                }
             }
 
-
-            &.next {
-                transform: rotate(180deg);
-            }
-        }
-
-        p {
-            margin: 0 16px;
         }
     }
 

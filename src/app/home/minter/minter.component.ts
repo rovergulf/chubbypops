@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Web3Service } from '../../shared/services';
 import { AlertService } from 'ngx-slice-kit';
 
@@ -10,6 +10,7 @@ import { AlertService } from 'ngx-slice-kit';
 export class MinterComponent implements OnInit {
 
     constructor(
+        @Inject(PLATFORM_ID) private platformId: any,
         private web3: Web3Service,
         private alerts: AlertService,
     ) {

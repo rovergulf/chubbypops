@@ -1,0 +1,15 @@
+@import "~ngx-slice-kit/lib/core/styles/flexbox";
+@import "../../../../mixins";
+
+main {
+    header {
+        padding: 20px;}
+
+    section {
+        padding: 20px;
+    }
+
+    footer {
+        padding: 20px;
+    }
+}
