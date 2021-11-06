@@ -13,7 +13,7 @@ export class RoadmapComponent implements OnInit {
         slidesToScroll: 1,
         slidesToShow: 1,
         pauseByHover: true,
-        infinity: false,
+        infinity: true,
         timeout: 0
     };
 
