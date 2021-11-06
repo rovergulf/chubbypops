@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-roadmap',
@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./roadmap.component.scss']
 })
 export class RoadmapComponent implements OnInit {
+
+    currentWidth: number = 0;
+
+    @HostListener('window:resize', ['$event'])
+    onWindowResize(event: any): void {
+        this.currentWidth = event.target.innerWidth;
+    }
 
     config = {
         arrows: true,

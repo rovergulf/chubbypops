@@ -9,6 +9,7 @@ footer {
     .content {
         @extend .flex-row;
         @extend .layout-center-center;
+        @extend .flex-wrap;
         width: 100%;
         max-width: 1200px;
     }
@@ -28,5 +29,11 @@ footer {
                 height: 50px;
             }
         }
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .community {
+        margin-top: 20px;
     }
 }

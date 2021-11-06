@@ -1,5 +1,6 @@
 @import "~ngx-slice-kit/lib/core/styles/flexbox";
 @import "../../../mixins";
+@import "../../../variables";
 
 section {
     @include flex-column;

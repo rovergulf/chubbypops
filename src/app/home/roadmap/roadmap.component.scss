@@ -3,17 +3,10 @@
 @import "../../../variables";
 
 section {
-    @extend .flex-column;
-    @extend .layout-start-stretch;
-    width: 100%;
-    max-width: 1200px;
-
-    sdk-carousel {
-
-    }
+    @include flex-column;
 
     sdk-slide {
-        padding: 20px;
+        padding: 0 32px;
     }
 
     .roadmap-slide {
@@ -26,7 +19,6 @@ section {
 
         ul {
             @extend .flex-column;
-            margin-left: 32px;
 
             li {
                 position: relative;
@@ -45,6 +37,28 @@ section {
         }
     }
 
+    @media screen and (max-width: 1264px) {
+        sdk-carousel {
+            width: 896px;
+        }
+    }
 
+    @media screen and (max-width: 960px) {
+        sdk-carousel {
+            width: 640px;
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        sdk-carousel {
+            width: 480px;
+        }
+    }
+
+    @media screen and (max-width: 560px) {
+        sdk-carousel {
+            width: 256px;
+        }
+    }
 
 }

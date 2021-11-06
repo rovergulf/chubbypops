@@ -55,4 +55,14 @@ header {
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .logo a span {
+        display: none;
+    }
+
+    .community {
+        display: none;
+    }
+}
+
 

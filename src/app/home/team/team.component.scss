@@ -1,11 +1,11 @@
 @import "~ngx-slice-kit/lib/core/styles/flexbox";
 @import "../../../mixins";
+@import "../../../variables";
 
 section {
     @include flex-column;
 
     h1 {
-        @include h1-main;
         margin-bottom: 20px;
     }
 
@@ -51,11 +51,6 @@ section {
                     font-size: 28px;
                     line-height: 32px;
                 }
-            }
-
-            @media screen and (max-width: 960px) {
-                h3 {}
-                p {}
             }
 
             @media screen and (max-width: 720px) {
