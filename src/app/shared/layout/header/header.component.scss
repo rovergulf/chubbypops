@@ -1,6 +1,8 @@
 @import "~ngx-slice-kit/lib/core/styles/flexbox";
+@import "../../../../mixins";
 
 header {
+    @include fredoka;
     @extend .flex-row;
     @extend .layout-center-center;
     position: fixed;
@@ -12,6 +14,7 @@ header {
     background: #fff;
     width: 100%;
     padding: 0 16px;
+
 
     .content {
         @extend .flex-row;
@@ -36,6 +39,7 @@ header {
     .nav {
         @extend .flex-row;
         @extend .layout-center-center;
+        @extend .flex-wrap;
 
         a {
             margin: 8px;
@@ -65,4 +69,16 @@ header {
     }
 }
 
+@media screen and (max-width: 720px) {
+    header {
+        .logo img {
+            width: 32px;
+        }
+
+        .nav a {
+            font-size: 20px;
+            margin: 0 4px;
+        }
+    }
+}
 

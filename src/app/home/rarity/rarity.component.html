@@ -5,22 +5,37 @@
         <span class="spacer"></span>
         <div class="rare-meter">
             <div [ngClass]="currentChubby.rarity" class="line"></div>
-            <img [alt]="currentChubby.name" src="/assets/images/frame_90.png"/>
+            <img [alt]="currentChubby.name" [src]="currentChubby.rarity_image" />
         </div>
     </div>
 
     <div class="preview">
         <ul class="info">
             <li *ngFor="let prop of currentChubby.props">
-                <img [alt]="prop.value" [class.hidden]="!prop.value" src="/assets/images/check.png"/>
-                <p>{{prop.name}}</p>
+                <img [alt]="prop.value" [class.hidden]="!prop.value" [src]="currentChubby.prop_image"/>
+                <p [class.rare]="prop.rare">{{prop.name}}</p>
             </li>
         </ul>
-        <span class="spacer"></span>
+        <div class="spacer">
+            <span class="clip"></span>
+            <span class="clip"></span>
+            <span class="clip"></span>
+        </div>
         <div class="demo">
-            <img [alt]="currentChubby.name" [src]="getImageUrl(currentChubby.image)"/>
-            <span class="spacer"></span>
-            <p>Every chick is cool and chubby! Remember it!</p>
+            <img [alt]="currentChubby.name" [src]="currentChubby.image" />
         </div>
     </div>
+
+    <span class="spacer"></span>
+
+    <div class="rare-nav">
+        <img src="assets/images/arr.svg" class="prev" alt="Previous"
+             (click)="prev()" [class.disabled]="hasPrev" />
+        <p>{{currentChubby.name}}</p>
+        <img src="assets/images/arr.svg" class="next" alt="Next"
+             (click)="next()" [class.disabled]="hasNext" />
+    </div>
+    <span class="spacer"></span>
+    <p>Every chick is cool and chubby! Remember it!</p>
+
 </section>

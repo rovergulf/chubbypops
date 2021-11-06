@@ -28,6 +28,11 @@ main {
     .divider {
         padding: 48px;
     }
+
+    app-minter, app-story, app-roadmap, app-rarity, app-faq, app-team {
+        max-width: 1200px;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -39,5 +44,11 @@ main {
 @media screen and (max-width: 920px) {
     main .header img {
         max-height: 96px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    main .header {
+        flex-direction: column;
     }
 }

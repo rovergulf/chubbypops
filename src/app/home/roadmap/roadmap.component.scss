@@ -5,6 +5,10 @@
 section {
     @include flex-column;
 
+    sdk-carousel {
+        width: 100%;
+    }
+
     sdk-slide {
         padding: 0 32px;
     }
@@ -39,25 +43,25 @@ section {
 
     @media screen and (max-width: 1264px) {
         sdk-carousel {
-            width: 896px;
+            max-width: 896px;
         }
     }
 
     @media screen and (max-width: 960px) {
         sdk-carousel {
-            width: 640px;
+            max-width: 640px;
         }
     }
 
     @media screen and (max-width: 720px) {
         sdk-carousel {
-            width: 480px;
+            max-width: 480px;
         }
     }
 
     @media screen and (max-width: 560px) {
         sdk-carousel {
-            width: 256px;
+            max-width: 256px;
         }
     }
 

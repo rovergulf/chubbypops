@@ -2,20 +2,16 @@
 @mixin flex-row {
     @extend .flex-row;
     @extend .layout-center-center;
-    width: 100%;
-    max-width: 1200px;
 }
 
 @mixin flex-column {
     @extend .flex-column;
     @extend .layout-start-stretch;
-    width: 100%;
-    max-width: 1200px;
 }
 
-@mixin h1-main {
-    font-size: 80px;
-    line-height: 96px;
+
+@mixin fredoka {
+    font-family: 'Fredoka One', cursive;
 }
 
 @mixin azeret {

@@ -37,19 +37,19 @@ section {
                     width: 15%;
                 }
 
-                .common {
+                &.common {
                     width: 33%;
                 }
 
-                .epic {
+                &.epic {
                     width: 55%;
                 }
 
-                .rare {
+                &.rare {
                     width: 75%;
                 }
 
-                .super {
+                &.super {
                     width: 100%;
 
                     img {
@@ -65,18 +65,30 @@ section {
     .preview {
         @extend .flex-row;
         @extend .layout-start-stretch;
-        padding-top: 32px;
+        width: 100%;
+        padding: 32px 0;
 
         .spacer {
-            padding: 20px;
+            position: relative;
+            z-index: 5;
+            width: 40px;
+            @extend .flex-column;
+            @extend .layout-space-around-center;
+
+            .clip {
+                width: 64px;
+                border-radius: 8px;
+                height: 16px;
+                background: #fff;
+            }
         }
 
         .info {
             @extend .flex-column;
-            @extend .layout-start-stretch;
+            @extend .layout-center-stretch;
+            @include fredoka;
+            @extend .flex-grow-1;
             background-color: rgb(30, 49, 64);
-            max-width: 580px;
-            width: 100%;
             border-radius: 40px;
             padding: 64px 32px;
 
@@ -99,6 +111,10 @@ section {
                 p {
                     font-size: 40px;
                     line-height: 48px;
+
+                    &.rare {
+                        color: #ff9ede;
+                    }
                 }
             }
         }
@@ -106,19 +122,47 @@ section {
         .demo {
             @extend .flex-column;
             @extend .layout-start-center;
+            background-color: #ff9ede;
+            border-radius: 40px;
+            overflow: hidden;
+            max-width: 578px;
+            width: 100%;
 
             img {
-                max-width: 580px;
                 width: 100%;
-                margin-bottom: 24px;
-                border-radius: 40px;
+                max-width: 578px;
             }
 
             p {
-                @include azeret;
                 font-size: 32px;
                 line-height: 40px;
             }
+        }
+    }
+
+    .rare-nav {
+        @extend .flex-row;
+        @extend .layout-space-between-center;
+        @include fredoka;
+        white-space: nowrap;
+
+        img {
+            height: 32px;
+            cursor: pointer;
+            transition: all .3s ease;
+
+            &:hover {
+                opacity: .75;
+            }
+
+
+            &.next {
+                transform: rotate(180deg);
+            }
+        }
+
+        p {
+            margin: 0 16px;
         }
     }
 
@@ -142,18 +186,12 @@ section {
             align-items: center;
             padding-bottom: 16px;
 
-            .info {
-                order: 3;
-            }
-
             .spacer {
-                order: 2;
                 padding: 12px;
-            }
-
-            .demo {
-                order: 1;
-                -ms-flex-order: 1;
+                width: 0;
+                .clip {
+                    display: none;
+                }
             }
         }
     }
