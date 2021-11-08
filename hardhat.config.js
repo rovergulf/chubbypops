@@ -5,7 +5,7 @@ require('dotenv').config();
 require('@nomiclabs/hardhat-ethers');
 require("@nomiclabs/hardhat-etherscan");
 
-const {ROPSTEN_API_URL, PRIVATE_KEY, ETHERSCAN_API_KEY, MAINNET_API_URL} = process.env;
+const {ROPSTEN_API_URL, PRIVATE_KEY, ETHERSCAN_API_KEY, RINKEBY_API_URL, MAINNET_API_URL} = process.env;
 
 module.exports = {
     solidity: "0.8.9",
@@ -19,6 +19,10 @@ module.exports = {
         },
         ropsten: {
             url: ROPSTEN_API_URL,
+            accounts: [`0x${PRIVATE_KEY}`]
+        },
+        rinkeby: {
+            url: RINKEBY_API_URL,
             accounts: [`0x${PRIVATE_KEY}`]
         },
         localhost: {

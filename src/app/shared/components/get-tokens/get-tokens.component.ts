@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, PopupService } from 'ngx-slice-kit';
 import { ethers } from 'ethers';
 import { Subscription } from 'rxjs';
-import { Web3Service } from '../../services';
+import { DataService, Web3Service } from '../../services';
 import { environment } from '../../../../environments/environment';
 
 const singleFactoryItem = '415ea61b49bb6d5371083ba15f10e632ceb110712f162fcdccaab20c148511e2.gif';
@@ -21,8 +21,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
     @Output() resultEvent: EventEmitter<any> = new EventEmitter<any>();
 
     sub?: Subscription;
-    form?: FormGroup;
-    contract?: ethers.Contract;
+
     loading: boolean = false;
     tx: any;
     amount: number = 1;
@@ -30,10 +29,9 @@ export class GetTokensComponent implements OnInit, OnDestroy {
 
     constructor(
         public web3: Web3Service,
+        public dataService: DataService,
         private popup: PopupService,
         private alerts: AlertService,
-        private http: HttpClient,
-        private fb: FormBuilder,
     ) {
     }
 
@@ -47,33 +45,8 @@ export class GetTokensComponent implements OnInit, OnDestroy {
         return `https://${networkPrefix}/tx/${this.tx.hash}`;
     }
 
-    getContractFactory(): void {
-        if (this.loading) {
-            return;
-        }
-
-        this.loading = true;
-
-        this.http.get(environment.apiUrl).subscribe({
-            next: (res: any) => {
-                console.log(res);
-                if (res.contract) {
-                    const abi = JSON.parse(res.contract.abi);
-                    this.contract = new ethers.Contract(environment.contract, abi, this.web3.signer);
-                }
-                this.loading = false;
-            },
-            error: (err: any) => {
-                this.alerts.error({
-                    message: err.error?.message || err.error
-                });
-                this.loading = false;
-            }
-        });
-    }
-
     async contractCall(recipient: string, amount: number, rewrite?: any) {
-        return await this.contract!.mint(recipient, amount, rewrite);
+        return await this.dataService.contract.mint(recipient, amount, rewrite);
     }
 
     mint(): void {
@@ -86,7 +59,6 @@ export class GetTokensComponent implements OnInit, OnDestroy {
         // this amount is added due not enough ether sent error, seems it not
         const ethValue = this.ethValue + 0.00000000000000001;
         const value = ethers.utils.parseEther(ethValue.toString());
-        console.log(value);
         this.contractCall(this.web3.currentAccount, this.amount, {value}).then((tx: any) => {
             this.alerts.success({message: `Tx '${tx.hash}' sent!`});
             this.tx = tx;
@@ -124,7 +96,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.getContractFactory();
+        this.dataService.loadContractFactory();
     }
 
     ngOnDestroy(): void {
