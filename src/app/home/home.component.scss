@@ -36,9 +36,15 @@ main {
     }
 
     app-minter, app-story, app-roadmap, app-rarity, app-faq, app-team {
-        max-width: 1200px;
+        max-width: 1264px;
+        width: 100%;
+        padding: 0 32px;
+    }
+
+    app-preview {
         width: 100%;
     }
+
 }
 
 @media screen and (max-width: 1200px) {

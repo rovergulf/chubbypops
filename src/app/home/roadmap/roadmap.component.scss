@@ -45,28 +45,4 @@ section {
         }
     }
 
-    @media screen and (max-width: 1264px) {
-        sdk-carousel {
-            max-width: 896px;
-        }
-    }
-
-    @media screen and (max-width: 960px) {
-        sdk-carousel {
-            max-width: 640px;
-        }
-    }
-
-    @media screen and (max-width: 720px) {
-        sdk-carousel {
-            max-width: 480px;
-        }
-    }
-
-    @media screen and (max-width: 560px) {
-        sdk-carousel {
-            max-width: 256px;
-        }
-    }
-
 }

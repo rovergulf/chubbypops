@@ -1,0 +1,31 @@
+@import "~ngx-slice-kit/lib/core/styles/flexbox";
+@import "../../../mixins";
+@import "../../../variables";
+
+section {
+    .sdk-carousel__row {
+        justify-content: space-around;
+    }
+    sdk-slide {
+        @extend .flex-row;
+        @extend .layout-center-center;
+        @extend .flex-grow-1;
+        img {
+            margin: 8px;
+        }
+    }
+
+    ul {
+        @extend .flex-row;
+        @extend .layout-start-start;
+        width: 100%;
+        overflow: auto;
+
+        li {
+            @extend .flex-grow-1;
+            &:not(:last-child) {
+                margin-right: 16px;
+            }
+        }
+    }
+}

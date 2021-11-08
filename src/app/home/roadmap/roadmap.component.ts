@@ -7,13 +7,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class RoadmapComponent implements OnInit {
 
-    currentWidth: number = 0;
-
-    @HostListener('window:resize', ['$event'])
-    onWindowResize(event: any): void {
-        this.currentWidth = event.target.innerWidth;
-    }
-
     config = {
         arrows: true,
         offset: 32,

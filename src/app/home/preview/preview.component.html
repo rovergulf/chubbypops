@@ -1,4 +1,27 @@
 <section>
     <!-- First line -->
+    <sdk-carousel [arrows]="config.arrows"
+                  [infinity]="config.infinity"
+                  [offset]="config.offset"
+                  [slidesToScroll]="config.slidesToScroll"
+                  [slidesToShow]="config.slidesToShow"
+                  [timeout]="5000">
+        <sdk-slide *ngFor="let asset of assets">
+            <img [src]="asset" alt="Random Chubby" />
+        </sdk-slide>
+    </sdk-carousel>
+
+    <span class="spacer"></span>
+
     <!-- Second line -->
+    <sdk-carousel [arrows]="config.arrows"
+                  [infinity]="config.infinity"
+                  [offset]="config.offset"
+                  [slidesToScroll]="config.slidesToScroll"
+                  [slidesToShow]="config.slidesToShow"
+                  [timeout]="5500">
+        <sdk-slide *ngFor="let asset of assets2">
+            <img [src]="asset" alt="Random Chubby" />
+        </sdk-slide>
+    </sdk-carousel>
 </section>
