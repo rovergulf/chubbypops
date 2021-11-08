@@ -1,5 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -26,6 +27,8 @@ import { PreviewComponent } from './preview/preview.component';
     ],
     imports: [
         CommonModule,
+        // FormsModule,
+        // ReactiveFormsModule,
         HomeRoutingModule,
         SharedModule,
     ],

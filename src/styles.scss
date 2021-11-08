@@ -24,3 +24,29 @@ span.spacer {
     opacity: .5;
     cursor: default;
 }
+
+.mint-button {
+    position: relative;
+    background-color: #ff9ede;
+    height: 100px;
+    width: 360px;
+    font-family: 'Fredoka One', cursive;
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s ease;
+    overflow: hidden;
+
+    &:hover {
+        opacity: .75;
+    }
+
+    span {
+        position: absolute;
+        height: 168px;
+        width: 40px;
+        background: rgba(255,255,255,.3);
+        top: calc(50% - 84px);
+        left: 50%;
+        transform: rotate(25deg);
+    }
+}

@@ -2,14 +2,84 @@
 @import "../../../../mixins";
 
 main {
+    min-width: 320px;
+    min-height: 80vh;
+    border-radius: 40px;
+    background: #0d2638;
+
     header {
-        padding: 20px;}
+        @extend .flex-row;
+        @extend .layout-space-between-center;
+        @include fredoka;
+        padding: 20px 32px;
+        background: #fff;
+        border-radius: 40px 40px 0 0;
+    }
 
     section {
-        padding: 20px;
+        padding: 20px 32px;
+        color: #fff;
+
+        .amount {
+            @extend .flex-row;
+            @extend .layout-space-between-center;
+
+            .inc {
+                transform: rotate(180deg);
+            }
+        }
+
+        .factory {
+            @extend .flex-row;
+            @extend .layout-center-stretch;
+
+            &>span {
+                padding: 24px;
+            }
+
+            .params {
+                @extend .flex-column;
+                @extend .layout-start-stretch;
+                @extend .flex-grow-1;
+            }
+        }
+
+        .factory-image {
+            @extend .flex-column;
+            @extend .layout-center-center;
+            img {
+                max-width: 480px;
+            }
+        }
+
+        .mint-button {
+            border-radius: 32px;
+            font-size: 40px;
+            line-height: 64px;
+            height: 64px;
+            width: 100%;
+        }
     }
 
     footer {
-        padding: 20px;
+        //padding: 20px;
+        //border-radius: 0 0 40px 40px;
+    }
+
+    h3 {
+        @include fredoka;
+        font-size: 40px;
+        line-height: 56px;
+    }
+
+    p {
+        font-size: 32px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    main {
+        min-width: 560px;
     }
 }

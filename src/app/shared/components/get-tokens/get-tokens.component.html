@@ -1,9 +1,41 @@
 <main>
     <header>
-        <h1>Mint</h1>
+        <h1>Mint Chubby</h1>
         <span class="spacer"></span>
-        <sdk-icon icon="close"></sdk-icon>
+        <sdk-icon icon="close" [size]="40" (click)="close()"></sdk-icon>
     </header>
-    <section></section>
+    <section>
+        <h3>Recipient:</h3>
+        <p>{{web3.currentAccount}}</p>
+        <span class="spacer"></span>
+        <div class="factory">
+            <div class="factory-image">
+                <img [src]="factoryImage" alt="Eggs"/>
+            </div>
+            <span class="spacer"></span>
+            <div class="params">
+                <h3>Amount:</h3>
+                <div class="amount">
+                    <img src="assets/images/arr.svg" class="dec" alt="Previous"
+                         (click)="decrease()" [class.disabled]="canDecrease"/>
+                    <p>{{amount}}</p>
+                    <img src="assets/images/arr.svg" class="inc" alt="Next"
+                         (click)="increase()" [class.disabled]="canIncrease"/>
+
+                </div>
+                <span class="spacer"></span>
+                <h3>Ether:</h3>
+                <sdk-input autocomplete="off" [(ngModel)]="ethValue" label="Ether"
+                           required size="full-width" caption="Each token costs 0.04 Ether per mint"></sdk-input>
+                <span class="spacer flex-grow-1"></span>
+                <ng-container *ngIf="!tx?.hash">
+                    <button class="mint-button" [disabled]="loading" (click)="mint()">Mint</button>
+                </ng-container>
+                <ng-container *ngIf="tx?.hash">
+                    <a class="mint-button" target="_blank" [href]="txUrl">View tx</a>
+                </ng-container>
+            </div>
+        </div>
+    </section>
     <footer></footer>
 </main>

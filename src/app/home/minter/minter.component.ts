@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Web3Service } from '../../shared/services';
-import { AlertService } from 'ngx-slice-kit';
+import { AlertService, DialogService } from 'ngx-slice-kit';
+import { GetTokensComponent } from '../../shared/components/get-tokens/get-tokens.component';
 
 @Component({
     selector: 'app-minter',
@@ -13,6 +14,7 @@ export class MinterComponent implements OnInit {
         @Inject(PLATFORM_ID) private platformId: any,
         private web3: Web3Service,
         private alerts: AlertService,
+        private dialog: DialogService,
     ) {
     }
 
@@ -24,10 +26,20 @@ export class MinterComponent implements OnInit {
                 positionX: 'center',
             });
         } else {
-            this.alerts.error({
-                title: `Work in progress`,
-                message: `WIP: Sale is not started yet!`
-            });
+            const isRopsten = this.web3.network === '0x3';
+            const isRinkeby = this.web3.network === '0x4';
+            if (isRopsten) {
+                this.dialog.showDialog(GetTokensComponent).subscribe({
+                    next: (res: any) => {
+                        console.log(res);
+                    }
+                });
+            } else if (isRinkeby) {} else {
+                this.alerts.error({
+                    title: `Work in progress`,
+                    message: `WIP: Sale is not started yet!`
+                });
+            }
         }
     }
 

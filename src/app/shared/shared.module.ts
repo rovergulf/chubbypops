@@ -25,6 +25,8 @@ const moduleDeclarations = [
     ],
     imports: [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         HttpClientModule,
         SliceKitModule,
     ],

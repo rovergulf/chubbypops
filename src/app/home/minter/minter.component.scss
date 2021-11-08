@@ -30,39 +30,18 @@ section {
             margin-bottom: 24px;
         }
 
-        button {
-            position: relative;
+        .mint-button {
             border-radius: 50px;
-            background-color: #ff9ede;
-            height: 100px;
-            width: 360px;
-            font-family: 'Fredoka One', cursive;
-            color: #fff;
             font-size: 40px;
             line-height: 100px;
-            cursor: pointer;
-            transition: all .3s ease;
-            overflow: hidden;
-
-            &:hover {
-                opacity: .75;
-            }
-
-            span {
-                position: absolute;
-                height: 168px;
-                width: 40px;
-                background: rgba(255,255,255,.3);
-                top: calc(50% - 84px);
-                left: 50%;
-                transform: rotate(25deg);
-            }
+            height: 100px;
+            width: 360px;
         }
     }
 
 
     @media screen and (max-width: 1200px) {
-        .catch button {
+        .catch .mint-button {
             height: 80px;
             line-height: 80px;
             width: 320px;
