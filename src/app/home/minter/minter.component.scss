@@ -3,11 +3,14 @@
 @import "../../../variables";
 
 section {
-    @include flex-row;
+    @extend .flex-row;
+    @extend .layout-space-between-center;
 
-    img {
-        max-width: 480px;
-        border-radius: 24px;
+    .image {
+        img {
+            max-width: 480px;
+            border-radius: 24px;
+        }
     }
 
     & > .spacer {
@@ -16,7 +19,7 @@ section {
 
     .catch {
         @extend .flex-column;
-        @extend .layout-start-start;
+        @extend .layout-space-between-stretch;
         @extend .flex-grow-1;
         padding: 16px;
         max-width: 580px;
@@ -28,7 +31,7 @@ section {
         }
 
         button {
-            align-self: center;
+            position: relative;
             border-radius: 50px;
             background-color: #ff9ede;
             height: 100px;
@@ -39,9 +42,20 @@ section {
             line-height: 100px;
             cursor: pointer;
             transition: all .3s ease;
+            overflow: hidden;
 
             &:hover {
                 opacity: .75;
+            }
+
+            span {
+                position: absolute;
+                height: 168px;
+                width: 40px;
+                background: rgba(255,255,255,.3);
+                top: calc(50% - 84px);
+                left: 50%;
+                transform: rotate(25deg);
             }
         }
     }

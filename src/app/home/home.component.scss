@@ -10,10 +10,16 @@ main {
     color: #fff;
 
     .header {
-        @include flex-row;
+        @extend .flex-row;
+        @extend .layout-space-between-center;
         padding: 96px 0;
+        width: 100%;
+        max-width: 1200px;
 
         h1 {
+            font-size: 156px;
+            line-height: 180px;
+            letter-spacing: 4px;
             background: -webkit-linear-gradient(270deg, #FFF2A9 0%, #FF71CE 90.48%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -36,14 +42,24 @@ main {
 }
 
 @media screen and (max-width: 1200px) {
-    main .header img {
-        max-height: 136px;
+    main .header {
+        h1 {
+            font-size: 120px;
+            line-height: 136px;
+        }
+        img {
+            max-height: 136px;
+        }
     }
 }
 
 @media screen and (max-width: 920px) {
-    main .header img {
-        max-height: 96px;
+    main .header {
+        font-size: 80px;
+        line-height: 96px;
+        img {
+            max-height: 96px;
+        }
     }
 }
 
