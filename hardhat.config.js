@@ -8,7 +8,15 @@ require("@nomiclabs/hardhat-etherscan");
 const {ROPSTEN_API_URL, PRIVATE_KEY, ETHERSCAN_API_KEY, RINKEBY_API_URL, MAINNET_API_URL} = process.env;
 
 module.exports = {
-    solidity: "0.8.9",
+    solidity: {
+        version: "0.8.9",
+        settings: {
+            optimizer: {
+                enabled: true,
+                runs: 200
+            }
+        }
+    },
     defaultNetwork: 'ropsten',
     optimizer: true,
     networks: {
@@ -32,5 +40,11 @@ module.exports = {
     },
     etherscan: {
         apiKey: ETHERSCAN_API_KEY
-    }
+    },
+    paths: {
+        sources: "./contracts",
+        tests: "./test",
+        cache: "./cache",
+        artifacts: "./artifacts"
+    },
 };

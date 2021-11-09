@@ -1,6 +1,4 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, PopupService } from 'ngx-slice-kit';
 import { ethers } from 'ethers';
 import { Subscription } from 'rxjs';
