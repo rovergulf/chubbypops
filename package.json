@@ -14,6 +14,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-eslint/schematics": "^1.2.0",
     "@angular/animations": "~13.0.0",
     "@angular/cdk": "^13.0.0",
     "@angular/common": "~13.0.0",
@@ -52,7 +53,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "ngx-slice-kit": "^0.11.0",
+    "ngx-slice-kit": "^0.12.0",
     "typescript": "~4.4.4",
     "webpack-sources": "^3.2.1"
   }
