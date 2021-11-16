@@ -71,6 +71,10 @@ contract ChubbyFactory is FactoryERC721, Ownable {
 
     function mint(uint256 optionId_, address toAddress_) override public {
         // Must be sent from the owner proxy or owner.
+        ProxyRegistry proxyRegistry = ProxyRegistry(proxyRegistryAddress);
+        assert(address(proxyRegistry.proxies(owner())) == _msgSender() || owner() == _msgSender());
+
+        // if can mint
         require(canMint(optionId_));
 
         uint256 mintAmount = optionId_ + 1;
