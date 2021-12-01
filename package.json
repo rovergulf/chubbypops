@@ -54,7 +54,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ngx-slice-kit": "^0.12.0",
-    "typescript": "~4.4.4",
+    "typescript": "~4.5.2",
     "webpack-sources": "^3.2.1"
   }
 }
