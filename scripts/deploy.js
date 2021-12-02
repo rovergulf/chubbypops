@@ -3,7 +3,7 @@ const {
 } = process.env;
 
 async function main() {
-    const chicks = await ethers.getContractFactory('Chick');
+    const chicks = await ethers.getContractFactory('ChubbyPops');
     const factory = await ethers.getContractFactory('ChubbyFactory');
 
     // OpenSea proxy registry addresses for rinkeby and mainnet.

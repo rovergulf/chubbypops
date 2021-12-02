@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./IFactoryERC721.sol";
-import "./Chick.sol";
+import "./ChubbyPops.sol";
 
 contract ChubbyFactory is FactoryERC721, Ownable {
     using Strings for string;
@@ -27,7 +27,7 @@ contract ChubbyFactory is FactoryERC721, Ownable {
     uint256 SUPPLY = 1e4;
 
     /*
-     * Three different options for minting Chicks (basic, premium, and gold).
+     * Three different options for minting ChubbyPopss (basic, premium, and gold).
      */
     uint256 NUM_OPTIONS = 10;
 
@@ -42,7 +42,7 @@ contract ChubbyFactory is FactoryERC721, Ownable {
     }
 
     function name() override external pure returns (string memory) {
-        return "Chubby Pops Supply Sale";
+        return "Chubby Factory";
     }
 
     function symbol() override external pure returns (string memory) {
@@ -79,7 +79,7 @@ contract ChubbyFactory is FactoryERC721, Ownable {
 
         uint256 mintAmount = optionId_ + 1;
 
-        Chick chubby = Chick(proxyRegistryAddress);
+        ChubbyPops chubby = ChubbyPops(nftAddress);
         for (uint256 i = 0; i <= mintAmount; i++) {
             chubby.mintTo(toAddress_);
         }
@@ -90,7 +90,7 @@ contract ChubbyFactory is FactoryERC721, Ownable {
             return false;
         }
 
-        Chick chubby = Chick(proxyRegistryAddress);
+        ChubbyPops chubby = ChubbyPops(proxyRegistryAddress);
         uint256 mintAmount = optionId_ + 1;
         uint256 totalSupply = chubby.totalSupply();
         return totalSupply < (SUPPLY - mintAmount);
