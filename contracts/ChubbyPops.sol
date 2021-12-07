@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.2;
 
-pragma solidity ^0.8.0;
+import "./ERC721Tradeable.sol";
 
-import "./ERC721Tradable.sol";
+/// @custom:security-contact support@rovergulf.net
+contract ChubbyPops is ERC721Tradeable {
 
-contract ChubbyPops is ERC721Tradable {
-    constructor(address proxyRegistryAddress_) ERC721Tradable("Chubby Pops", "CHUB", proxyRegistryAddress_) {}
+    constructor(address proxyRegistryAddress_) ERC721Tradeable("Chubby Pops", "CHIP", proxyRegistryAddress_) {}
 
     function baseTokenURI() override public pure returns (string memory) {
         return "https://api.rovergulf.net/nft/metadata/test-chubbies/";

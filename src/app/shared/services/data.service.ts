@@ -39,8 +39,8 @@ export class DataService {
         const env: any = environment.apiUrl;
         this.http.get(env[this.web3.network]).subscribe({
             next: (res: any) => {
-                if (res.contract) {
-                    const abi = JSON.parse(res.contract.abi);
+                if (res) {
+                    const abi = JSON.parse(res.abi);
                     this.contract = new ethers.Contract(environment.contract, abi, this.web3.signer);
                 }
                 this.loading = false;

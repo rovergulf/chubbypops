@@ -18,18 +18,17 @@ contract ChubbyFactory is FactoryERC721, Ownable {
 
     address public proxyRegistryAddress;
     address public nftAddress;
-    address public basketNftAddress;
     string public baseURI = "https://api.rovergulf.net/nft/factory/test-chubbies/";
 
     /*
      * Enforce the existence of only 10000 chicks.
      */
-    uint256 SUPPLY = 1e4;
+    uint256 public SUPPLY = 1e4;
 
     /*
-     * Three different options for minting ChubbyPopss (basic, premium, and gold).
+     * Number of options for minting Chubby Pops.
      */
-    uint256 NUM_OPTIONS = 10;
+    uint256 public NUM_OPTIONS = 10;
 
     constructor(
         address nftAddress_,
@@ -77,10 +76,8 @@ contract ChubbyFactory is FactoryERC721, Ownable {
         // if can mint
         require(canMint(optionId_));
 
-        uint256 mintAmount = optionId_ + 1;
-
         ChubbyPops chubby = ChubbyPops(nftAddress);
-        for (uint256 i = 0; i <= mintAmount; i++) {
+        for (uint256 i = 0; i <= optionId_; i++) {
             chubby.mintTo(toAddress_);
         }
     }
@@ -90,10 +87,9 @@ contract ChubbyFactory is FactoryERC721, Ownable {
             return false;
         }
 
-        ChubbyPops chubby = ChubbyPops(proxyRegistryAddress);
-        uint256 mintAmount = optionId_ + 1;
+        ChubbyPops chubby = ChubbyPops(nftAddress);
         uint256 totalSupply = chubby.totalSupply();
-        return totalSupply < (SUPPLY - mintAmount);
+        return totalSupply < (SUPPLY - (optionId_ + 1));
     }
 
     function tokenURI(uint256 optionId_) override external view returns (string memory) {
@@ -117,8 +113,7 @@ contract ChubbyFactory is FactoryERC721, Ownable {
      * Use isApprovedForAll so the frontend doesn't have to worry about different method names.
      */
     function isApprovedForAll(address _owner, address _operator)
-    public
-    view
+    public view
     returns (bool)
     {
         if (owner() == _owner && _owner == _operator) {

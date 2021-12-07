@@ -5,6 +5,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
 import "./common/meta-transactions/ContentMixin.sol";
@@ -20,11 +21,12 @@ contract ProxyRegistry {
  * @title ERC721Tradable
  * ERC721Tradable - ERC721 contract that whitelists a trading address, and has minting functionality.
  */
-abstract contract ERC721Tradable is ERC721Enumerable, ContextMixin, NativeMetaTransaction, Ownable {
-    using SafeMath for uint256;
+abstract contract ERC721Tradeable is ERC721Enumerable, ContextMixin, NativeMetaTransaction, Ownable {
+    using Counters for Counters.Counter;
+
+    Counters.Counter private _tokenIdCounter;
 
     address public proxyRegistryAddress;
-    uint256 private _currentTokenId = 0;
 
     constructor(
         string memory name_,
@@ -40,24 +42,13 @@ abstract contract ERC721Tradable is ERC721Enumerable, ContextMixin, NativeMetaTr
      * @param to_ address of the future owner of the token
      */
     function mintTo(address to_) public onlyOwner {
-        uint256 newTokenId = _getNextTokenId();
+        _tokenIdCounter.increment();
+        uint256 newTokenId = _tokenIdCounter.current();
         _mint(to_, newTokenId);
-        _incrementTokenId();
     }
 
-    /**
-     * @dev calculates the next token ID based on value of _currentTokenId
-     * @return uint256 for the next token ID
-     */
-    function _getNextTokenId() private view returns (uint256) {
-        return _currentTokenId.add(1);
-    }
-
-    /**
-     * @dev increments the value of _currentTokenId
-     */
-    function _incrementTokenId() private {
-        _currentTokenId++;
+    function currentTokenId() public view returns(uint256) {
+        return _tokenIdCounter.current();
     }
 
     function baseTokenURI() virtual public pure returns (string memory);
