@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-roadmap',
@@ -20,47 +20,48 @@ export class RoadmapComponent implements OnInit {
     roadmap: any[] = [{
         point: '10%',
         image: '/assets/images/10.svg',
-        content: ['We will randomly airdrop Chubby Pops NFT to owners'],
+        content: [
+            'We will randomly airdrop Chubby Pops NFT to owners',
+            'Discord server will be updated and staff will be expanded'
+        ],
     }, {
         point: '25%',
         image: '/assets/images/25.svg',
         content: [
-            'Good deeds bank fills with 5 ETH',
-            'Exclusive NFTs will be raffled among community members',
-            'Discord server will be updated and staff will be expanded'
+            'Good deeds bank fills with 3 ETH',
+            'Choosing a fund for donation by voting in discord and transfer of funds'
         ]
     }, {
         point: '50%',
         image: '/assets/images/50.svg',
         content: [
-            'Good deeds bank fills with 10 ETH',
-            'We develop merchandise and give away it among the community.',
-            'We are looking for a team for collaboration',
+            'Good deeds bank fills with 5 ETH',
+            'Choosing a fund for donation by voting in discord and transfer of funds',
+            'Drawing of 1 ETH among holders',
         ]
     }, {
         point: '75%',
         image: '/assets/images/75.svg',
         content: [
-            'Good deeds bank fills with 15 ETH',
-            'Exclusive NFTs will be raffled among community members',
-            'We make a choice of direction for donations together with the community',
+            'Good deeds bank fills with 8 ETH',
+            'Choosing a fund for donation by voting in discord and transfer of funds',
+            'Exclusive NFTs will be raffled among owners',
         ]
     }, {
         point: '100%',
         image: '/assets/images/100.svg',
         content: [
-            'We add 20 ETH more to the good deeds bankand transfer it to the selected charity',
-            'Rare NFTs will be raffled among community members',
+            'Good deeds bank fills with 10 ETH',
+            'Choosing a fund for donation by voting in discord and transfer of funds',
             'Creators make themselves bird tattoos',
         ]
     }, {
         point: '???',
         image: '/assets/images/q.svg',
         content: [
-            'All along the way we will listen to the community to be better. ' +
-            'As a bird that learns new words every day we want to grow and progress ' +
-            'to make our voices heard by millions of people around the world. ' +
-            'And this is impossible without you!',
+            'We develop the community',
+            'Launching new cool products',
+            'And we try to make the world a little better together 😊',
         ]
     }];
 

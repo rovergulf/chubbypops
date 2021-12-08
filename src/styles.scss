@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Azeret+Mono&display=swap');
-@import "~ngx-slice-kit/lib/core/styles/defaults";
+@import "./node_modules/ngx-slice-kit/lib/core/styles/defaults";
 
 html, body {
     width: 100vw;
@@ -35,6 +35,7 @@ span.spacer {
     cursor: pointer;
     transition: all .3s ease;
     overflow: hidden;
+    text-align: center;
 
     &:hover {
         opacity: .75;
