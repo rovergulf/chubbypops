@@ -18,7 +18,7 @@ contract ChubbyFactory is FactoryERC721, Ownable {
 
     address public proxyRegistryAddress;
     address public nftAddress;
-    string public baseURI = "https://api.rovergulf.net/nft/factory/test-chubbies/";
+    string public baseURI = "https://api.rovergulf.net/nft/factory/chubby-pops/";
 
     /*
      * Enforce the existence of only 10000 chicks.

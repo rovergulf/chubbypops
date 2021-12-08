@@ -9,11 +9,11 @@ contract ChubbyPops is ERC721Tradeable {
     constructor(address proxyRegistryAddress_) ERC721Tradeable("Chubby Pops", "CHIP", proxyRegistryAddress_) {}
 
     function baseTokenURI() override public pure returns (string memory) {
-        return "https://api.rovergulf.net/nft/metadata/test-chubbies/";
+        return "https://api.rovergulf.net/nft/metadata/chubby-pops/";
     }
 
     function contractURI() public pure returns (string memory) {
-        return "https://api.rovergulf.net/nft/metadata/test-chubbies";
+        return "https://api.rovergulf.net/nft/metadata/chubby-pops";
     }
 
 }
