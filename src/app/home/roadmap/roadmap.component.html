@@ -9,7 +9,7 @@
                   [timeout]="config.timeout">
         <sdk-slide *ngFor="let key of roadmap">
             <div class="roadmap-slide">
-                <img [alt]="key.point" [src]="key.image"/>
+                <img class="roadmap-percentage-image" [alt]="key.point" [src]="key.image"/>
                 <span class="spacer"></span>
                 <ul class="content">
                     <li *ngFor="let v of key.content">

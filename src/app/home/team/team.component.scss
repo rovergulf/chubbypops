@@ -11,8 +11,7 @@ section {
 
     ul {
         @extend .flex-row;
-        @extend .layout-center-center;
-        @extend .flex-wrap;
+        @extend .layout-start-stretch;
 
         @media screen and (min-width: 1200px) {
             justify-content: space-between;
@@ -21,11 +20,13 @@ section {
         li {
             @extend .flex-column;
             @extend .layout-start-stretch;
+            @extend .flex-grow-1;
 
             margin: 8px;
 
             img {
                 margin-bottom: 20px;
+                max-width: 100%;
             }
 
             h3 {
@@ -53,14 +54,18 @@ section {
             }
 
             @media screen and (max-width: 720px) {
+                img {
+                    margin-bottom: 10px;
+                }
+
                 h3 {
-                    font-size: 24px;
-                    line-height: 32px;
+                    font-size: 12px;
+                    line-height: 16px;
                 }
 
                 p {
-                    font-size: 20px;
-                    line-height: 28px;
+                    font-size: 10px;
+                    line-height: 16px;
                 }
             }
         }

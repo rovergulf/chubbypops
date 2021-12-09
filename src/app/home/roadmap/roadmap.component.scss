@@ -30,6 +30,9 @@ section {
 
             li {
                 position: relative;
+                &:not(:last-child) {
+                    margin-bottom: 16px;
+                }
 
                 &::before {
                     content: '';
@@ -45,4 +48,32 @@ section {
         }
     }
 
+    @media screen and (max-width: 960px) {
+        .roadmap-slide {
+            padding: 20px 48px;
+
+            img {
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 920px) {
+        .roadmap-slide {
+            padding: 16px 32px;
+        }
+
+        h1 {
+            padding: 0 16px;
+            font-size: 32px;
+            line-height: 48px;
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        h1 {
+            font-size: 32px;
+            line-height: 48px;
+        }
+    }
 }

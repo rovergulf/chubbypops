@@ -2,29 +2,67 @@
     <div class="content">
         <div class="logo">
             <a href="#">
-                <img src="/assets/images/header_egg.svg" alt="Egg Logo" />
+                <img src="/assets/images/header_egg.svg" alt="Egg Logo"/>
                 <span>Chubby Pops</span>
             </a>
         </div>
         <span class="spacer"></span>
-        <div class="nav">
-            <a href="#story">Story</a>
-            <a href="#roadmap">Road Map</a>
-            <a href="#rare">Rarity</a>
-            <a href="#faq">FAQ</a>
-            <a href="#about">Team</a>
-        </div>
+        <ng-container *ngTemplateOutlet="navBar"></ng-container>
         <span class="spacer"></span>
-        <div class="community">
-            <a target="_blank" href="https://discord.gg/GTaDN8ucQB">
-                <img src="/assets/images/dis.svg" alt="Chubby Pops Discord server" />
-            </a>
-            <a target="_blank" href="https://twitter.com/PopsChubby">
-                <img src="/assets/images/tw.svg" alt="Chubby Pops on Twitter" />
-            </a>
-            <a target="_blank" href="https://opensea/" class="disabled">
-                <img src="/assets/images/op.svg" alt="Chubby Pops at OpenSea" />
-            </a>
+        <ng-container *ngTemplateOutlet="community"></ng-container>
+        <div class="mobile-menu">
+            <button class="burger">
+                <ng-container *ngIf="!navBarActive">
+                    <svg (click)="navBarActive = true"
+                         width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="6" width="28" height="3" rx="1.5" fill="#0D2638"/>
+                        <rect x="2" y="15" width="28" height="3" rx="1.5" fill="#0D2638"/>
+                        <rect x="2" y="23" width="28" height="3" rx="1.5" fill="#0D2638"/>
+                    </svg>
+                </ng-container>
+                <ng-container *ngIf="navBarActive">
+                    <svg (click)="navBarActive = false"
+                         xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <path d="M24 8L8 24" stroke="#0D2638" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 8L24 24" stroke="#0D2638" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </ng-container>
+            </button>
         </div>
     </div>
+    <div class="menu" [class.active]="navBarActive">
+        <ng-container *ngTemplateOutlet="navBar"></ng-container>
+        <span class="spacer"></span>
+        <ng-container *ngTemplateOutlet="community"></ng-container>
+    </div>
 </header>
+
+<ng-template #navBar>
+    <div class="nav">
+        <a href="#story">Story</a>
+        <a href="#roadmap">Road Map</a>
+        <a href="#rare">Rarity</a>
+        <a href="#faq">FAQ</a>
+        <a href="#about">Team</a>
+    </div>
+</ng-template>
+
+<ng-template #community>
+    <div class="community">
+        <a target="_blank" href="https://github.com/rovergulf/chubbypops">
+            <img src="/assets/images/github_dark.svg" alt="Chubby Pops public repository" />
+        </a>
+        <a target="_blank" href="https://etherscan.io/token/0x" class="disabled">
+            <img src="/assets/images/polygonscan_dark.svg" alt="Chubby Pops Contract on Polygonscan" />
+        </a>
+        <a target="_blank" href="https://discord.gg/GTaDN8ucQB">
+            <img src="/assets/images/discord_dark.svg" alt="Chubby Pops Discord server" />
+        </a>
+        <a target="_blank" href="https://twitter.com/PopsChubby">
+            <img src="/assets/images/twitter_dark.svg" alt="Chubby Pops on Twitter" />
+        </a>
+        <a target="_blank" class="disabled">
+            <img src="/assets/images/opensea_dark.svg" alt="Chubby Pops at OpenSea" />
+        </a>
+    </div>
+</ng-template>

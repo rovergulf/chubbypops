@@ -48,29 +48,69 @@ main {
 }
 
 @media screen and (max-width: 1200px) {
-    main .header {
-        h1 {
-            font-size: 120px;
-            line-height: 136px;
+    main {
+        app-minter, app-story, app-roadmap, app-faq, app-team {
+            padding: 0 24px;
         }
-        img {
-            max-height: 136px;
+
+        app-rarity {
+            display: none;
+        }
+
+        .header {
+            h1 {
+                font-size: 120px;
+                line-height: 136px;
+            }
+
+            img {
+                max-height: 136px;
+            }
         }
     }
 }
 
 @media screen and (max-width: 920px) {
-    main .header {
-        font-size: 80px;
-        line-height: 96px;
-        img {
-            max-height: 96px;
+    main {
+        padding: 64px 0;
+
+        app-minter, app-story, app-faq, app-team {
+            padding: 0 16px;
+        }
+
+        app-roadmap {
+            padding: 0;
+        }
+
+        .divider {
+            padding: 32px;
+        }
+
+        .header {
+            h1 {
+                font-size: 80px;
+                line-height: 96px;
+            }
+
+            img {
+                max-height: 96px;
+            }
         }
     }
 }
 
 @media screen and (max-width: 720px) {
     main .header {
-        flex-direction: column;
+        justify-content: center;
+
+        h1 {
+            font-size: 40px;
+            line-height: 48px;
+        }
+
+        img {
+            max-height: 48px;
+            margin: 0 8px;
+        }
     }
 }

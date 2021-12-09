@@ -49,13 +49,51 @@ header {
     }
 
     .community {
-        a {
-            margin: 0 8px;
-
-            &:last-child {
-                margin-right: 0;
-            }
+        a:not(:last-child) {
+            margin-right: 16px;
         }
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    .menu {
+        display: none;
+        position: fixed;
+        flex-direction: column;
+        @extend .layout-space-between-start;
+        z-index: 99;
+        top: 96px;
+        left: 0;
+        right: 0;
+        height: calc(100vh - 96px);
+        background: #fff;
+
+        &.active {
+            display: flex;
+            flex-direction: column;
+            @extend .layout-start-stretch;
+        }
+
+        .nav {
+            flex-direction: column;
+        }
+
+        .spacer {
+            padding: 24px;
+        }
+
+        .community {
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+        }
+    }
+
+    button.burger {
+        background: #fff;
     }
 }
 
@@ -63,9 +101,19 @@ header {
     .logo a span {
         display: none;
     }
+}
 
-    .community {
-        display: none;
+@media screen and (max-width: 960px) {
+    header {
+        .content {
+            .community, .nav {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            display: flex;
+        }
     }
 }
 
@@ -73,11 +121,6 @@ header {
     header {
         .logo img {
             width: 32px;
-        }
-
-        .nav a {
-            font-size: 20px;
-            margin: 0 4px;
         }
     }
 }

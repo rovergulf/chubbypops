@@ -1,7 +1,7 @@
 
 # ChubbyPops
 
-This repository contains public website and contract source code for [Chubby Pops](https://chubbypops.net) NFT collection, represented on Ethereum network.
+This repository contains public website and contract source code for [Chubby Pops](https://chubbypops.net) NFT collection, represented on Polygon network.
 
 ## Contract address
 

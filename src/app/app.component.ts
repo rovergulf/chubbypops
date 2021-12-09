@@ -18,26 +18,31 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (isPlatformBrowser(this.platformId)) {
-            if (this.web3.eth) {
-                this.web3.getAccounts().subscribe({
-                    next: (res: any) => {
-                        this.alerts.success({
-                            message: `You are logged to Chubby Pops!`,
-                            positionX: 'center',
-                            positionY: 'bottom',
-                        });
-                    },
-                    error: (err: any) => {
-                        this.alerts.error({
-                            message: 'Failed to authorize using Web3',
-                            positionX: 'center',
-                            positionY: 'bottom',
-                        });
-                    }
-                });
-            }
-        }
+        // 08.12.2021 - Captain Disorder:
+        // it is no longer needed, I think, cause mint interface is available only on OpenSea
+        // as we use Factory interface for minting
+        // but i'll keep it, cause we probably put in an OpenSea embeds
+
+        // if (isPlatformBrowser(this.platformId)) {
+        //     if (this.web3.eth) {
+        //         this.web3.getAccounts().subscribe({
+        //             next: (res: any) => {
+        //                 this.alerts.success({
+        //                     message: `You are logged to Chubby Pops!`,
+        //                     positionX: 'center',
+        //                     positionY: 'bottom',
+        //                 });
+        //             },
+        //             error: (err: any) => {
+        //                 this.alerts.error({
+        //                     message: 'Failed to authorize using Web3',
+        //                     positionX: 'center',
+        //                     positionY: 'bottom',
+        //                 });
+        //             }
+        //         });
+        //     }
+        // }
     }
 
 }

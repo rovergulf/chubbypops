@@ -4,11 +4,11 @@
 
 section {
     @extend .flex-row;
-    @extend .layout-space-between-center;
+    @extend .layout-space-between-stretch;
 
     .image {
         img {
-            max-width: 480px;
+            max-width: 100%;
             border-radius: 24px;
         }
     }
@@ -21,7 +21,7 @@ section {
         @extend .flex-column;
         @extend .layout-space-between-stretch;
         @extend .flex-grow-1;
-        padding: 16px;
+        padding: 0 16px;
         max-width: 580px;
 
         p {
@@ -46,6 +46,40 @@ section {
             line-height: 80px;
             width: 320px;
             font-size: 36px;
+        }
+    }
+
+    @media screen and (max-width: 960px) {
+        .catch {
+            h2 {
+                font-size: 32px;
+                line-height: 48px;
+            }
+
+            p {
+                font-size: 20px;
+                line-height: 32px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        .catch {
+            h2 {
+                font-size: 24px;
+                line-height: 32px;
+            }
+
+            p {
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+            .mint-button {
+                height: 64px;
+                line-height: 64px;
+                font-size: 20px;
+            }
         }
     }
 }
