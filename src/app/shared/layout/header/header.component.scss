@@ -78,6 +78,9 @@ header {
 
         .nav {
             flex-direction: column;
+            a:nth-child(3) {
+                display: none;
+            }
         }
 
         .spacer {
