@@ -108,6 +108,8 @@ header {
 
 @media screen and (max-width: 960px) {
     header {
+        height: 64px;
+
         .content {
             .community, .nav {
                 display: none;
