@@ -24,6 +24,8 @@ contract ChubbyFactory is FactoryERC721, Ownable {
      * Enforce the existence of only 10000 chicks.
      */
     uint256 public SUPPLY = 1e4;
+    uint256 public AIRDROP_SUPPLY = 40;
+    bool public AIRDROP_DONE = false;
 
     /*
      * Number of options for minting Chubby Pops.
@@ -89,7 +91,15 @@ contract ChubbyFactory is FactoryERC721, Ownable {
 
         ChubbyPops chubby = ChubbyPops(nftAddress);
         uint256 totalSupply = chubby.totalSupply();
-        return totalSupply < (SUPPLY - (optionId_ + 1));
+        uint256 mintAmount = optionId_ + 1;
+        if (!AIRDROP_DONE) {
+            mintAmount += AIRDROP_SUPPLY;
+        }
+        return totalSupply < (SUPPLY - (mintAmount));
+    }
+
+    function setAirdropDone() public onlyOwner {
+        AIRDROP_DONE = true;
     }
 
     function tokenURI(uint256 optionId_) override external view returns (string memory) {
