@@ -57,3 +57,41 @@ span.spacer {
         transform: rotate(25deg);
     }
 }
+
+// roadmap component slider
+
+app-roadmap {
+    button.sdk-button.sdk-round-button {
+        border-radius: 100%;
+        background-color: transparent;
+    }
+
+    .sdk-carousel__arrow {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover !important;
+        height: 80px !important;
+        width: 80px !important;
+
+        &--left {
+            background-image: url('/assets/images/arr_prev.svg') !important;
+        }
+        &--right {
+            background-image: url('/assets/images/arr_next.svg') !important;
+
+        }
+
+        sdk-icon {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 920px) {
+        .sdk-carousel__arrow {
+            height: 48px !important;
+            width: 48px !important;
+        }
+    }
+
+}
+
