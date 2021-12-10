@@ -95,10 +95,10 @@ contract ChubbyFactory is FactoryERC721, Ownable {
         if (!AIRDROP_DONE) {
             mintAmount += AIRDROP_SUPPLY;
         }
-        return totalSupply < (SUPPLY - (mintAmount));
+        return totalSupply < (SUPPLY - mintAmount);
     }
 
-    function setAirdropDone() public onlyOwner {
+    function setAirdropsDone() public onlyOwner {
         AIRDROP_DONE = true;
     }
 
