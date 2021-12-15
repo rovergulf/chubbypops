@@ -14,24 +14,26 @@ contract ChubbyPops is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
 
     Counters.Counter private _tokenIds;
 
-    address payable treasurer;
+    address payable treasurer; // withdraw to
+    uint256 public tokenPrice = 40 ether; // 40 matic
 
-    uint256 public tokenPrice = 40;
     uint256 public maxSupply = 1e4;
     uint256 public maxMintsPerTx = 10; // maximum mints per transaction
-    uint256 public airdropSupply = 40 ether; // 40 matic
+
+    // giveaway variables
+    uint256 public airdropSupply = 40;
     bool public airdropDone = false;
 
     constructor() ERC721("Chubby Pops", "CHIP") {
         treasurer = payable(_msgSender());
     }
 
-    function contractURI() public view returns (string memory) {
-        return "https://api.rovergulf.net/nft/metadata/chubby-pops";
+    function _baseURI() internal pure override returns (string memory) {
+        return "https://api.rovergulf.net/nft/metadata/test-chubbies/";
     }
 
-    function _baseURI() internal pure override returns (string memory) {
-        return "https://api.rovergulf.net/nft/metadata/chubby-pops/";
+    function contractURI() public pure returns (string memory) {
+        return "https://api.rovergulf.net/nft/metadata/test-chubbies";
     }
 
     function airdrop(address[] memory recipients) public onlyOwner {
@@ -47,13 +49,13 @@ contract ChubbyPops is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
     function mint(address to, uint256 amount) public payable {
         require(amount != 0, "Requested amount cannot be zero");
         require(amount <= maxMintsPerTx, "Requested amount is more than maximum");
+        uint256 mintAmount = amount;
         if (!airdropDone) {
-            uint256 reserve = totalSupply() + airdropSupply;
-            require(reserve + amount <= maxSupply, "Total supply will exceed limit");
-        } else {
-            require(totalSupply() + amount <= maxSupply, "Total supply will exceed limit");
+            mintAmount += airdropSupply;
         }
-        require((amount * tokenPrice) < msg.value, "Not enough Matic sent");
+        require(totalSupply() <= (maxSupply - mintAmount), "Total supply will exceed limit");
+        require(to != address(0), "Cannot be minted to zero address");
+        require((amount * tokenPrice) >= msg.value, "Not enough Matic sent");
 
         for (uint256 i = 0; i < amount; i++) {
             _tokenIds.increment();
@@ -64,10 +66,6 @@ contract ChubbyPops is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
 
     function setAirdropsDone() public onlyOwner {
         airdropDone = true;
-    }
-
-    function setTokenPrice(uint256 newPrice_) public onlyOwner {
-        tokenPrice = newPrice_;
     }
 
     function currentTokenId() public view returns (uint256) {
