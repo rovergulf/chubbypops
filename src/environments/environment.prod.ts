@@ -1,11 +1,9 @@
 export const environment = {
     production: true,
-    contract: '???',
-    templateId: '427f7710-cd94-417d-b179-57bb230e927a',
-    apiUrl: {
-        '0x3': 'http://localhost:9422/templates/427f7710-cd94-417d-b179-57bb230e927a/factory',
-        '0x4': 'http://localhost:9422/templates/427f7710-cd94-417d-b179-57bb230e927a/factory',
-        '0x1': 'http://localhost:9422/templates/427f7710-cd94-417d-b179-57bb230e927a/factory',
+    mintPrice: 40,
+    contracts: {
+        '0x4': '0xC5285BCc6e379e153119aAC4Ca46912e9D2859ba',
+        '0x89': '0x0000000000000000000000000000000000000000'
     },
     cdn: 'https://storage.googleapis.com/rovergulf/nft-gen/main',
 };

@@ -4,12 +4,9 @@
 
 export const environment = {
     production: false,
-    contract: '0x2f391096d8D01620AF832fa1e6254E48013D6B92',
-    templateId: '5ffc02e5-656c-46b3-b5ff-fc2254576d3e',
-    apiUrl: {
-        '0x3': 'http://localhost:9422/templates/5ffc02e5-656c-46b3-b5ff-fc2254576d3e/contract',
-        '0x4': 'http://localhost:9422/templates/5ffc02e5-656c-46b3-b5ff-fc2254576d3e/contract',
-        '0x1': 'http://localhost:9422/templates/5ffc02e5-656c-46b3-b5ff-fc2254576d3e/contract',
+    contracts: {
+        '0x4': '0xC5285BCc6e379e153119aAC4Ca46912e9D2859ba',
+        '0x89': '0x0000000000000000000000000000000000000000'
     },
     cdn: 'https://storage.googleapis.com/rovergulf/nft-gen/dev',
 };

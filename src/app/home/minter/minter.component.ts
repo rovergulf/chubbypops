@@ -26,15 +26,16 @@ export class MinterComponent implements OnInit {
                 positionX: 'center',
             });
         } else {
-            const isRopsten = this.web3.network === '0x3';
-            const isRinkeby = this.web3.network === '0x4';
-            if (isRopsten) {
+            const isMumbai = this.web3.network === '0x4';
+            const isPolygon = this.web3.network === '0x137';
+            console.log(this.web3.network)
+            if (isMumbai) {
                 this.dialog.showDialog(GetTokensComponent).subscribe({
                     next: (res: any) => {
                         console.log(res);
                     }
                 });
-            } else if (isRinkeby) {} else {
+            } else if (isPolygon) {} else {
                 this.alerts.error({
                     title: `Work in progress`,
                     message: `WIP: Sale is not started yet!`

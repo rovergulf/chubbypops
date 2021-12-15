@@ -4,10 +4,10 @@
         <span class="spacer"></span>
         <sdk-icon icon="close" [size]="40" (click)="close()"></sdk-icon>
     </header>
-    <section *ngIf="!dataService.contract">
+    <section *ngIf="!contract">
         <p>Loading contract interfaces...</p>
     </section>
-    <section *ngIf="dataService.contract">
+    <section *ngIf="contract">
         <h3>Recipient:</h3>
         <p>{{web3.currentAccount}}</p>
         <span class="spacer"></span>
@@ -19,17 +19,16 @@
             <div class="params">
                 <h3>Amount:</h3>
                 <div class="amount">
-                    <img src="assets/images/arr.svg" class="dec" alt="Previous"
+                    <img src="assets/images/arr.svg" class="dec" alt="Less"
                          (click)="decrease()" [class.disabled]="canDecrease"/>
                     <p>{{amount}}</p>
-                    <img src="assets/images/arr.svg" class="inc" alt="Next"
+                    <img src="assets/images/arr.svg" class="inc" alt="More"
                          (click)="increase()" [class.disabled]="canIncrease"/>
-
                 </div>
                 <span class="spacer"></span>
                 <h3>Ether:</h3>
                 <sdk-input autocomplete="off" [(ngModel)]="ethValue"
-                           size="full-width" caption="Each token costs 0.04 Ether per mint"></sdk-input>
+                           size="full-width" [caption]="priceCaption()"></sdk-input>
                 <span class="spacer flex-grow-1"></span>
                 <ng-container *ngIf="!tx?.hash">
                     <button class="mint-button" [disabled]="loading" (click)="mint()">Mint</button>
