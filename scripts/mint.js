@@ -1,7 +1,7 @@
-const {API_KEY, PRIVATE_KEY, FACTORY_CONTRACT_ADDR} = process.env;
+const {API_KEY, PRIVATE_KEY, CONTRACT_ADDR} = process.env;
 
 const {ethers} = require('hardhat');
-const contract = require('../artifacts/contracts/Factory.sol/ChubbyFactory.json');
+const contract = require('../artifacts/contracts/ChubbyPops.sol/ChubbyPops.json');
 
 // Alchemy provider
 const alchemyProvider = new ethers.providers.AlchemyProvider(network = 'rinkeby', API_KEY);
@@ -9,13 +9,13 @@ const alchemyProvider = new ethers.providers.AlchemyProvider(network = 'rinkeby'
 // signer
 const signer = new ethers.Wallet(PRIVATE_KEY, alchemyProvider);
 
-const chubbyFactory = new ethers.Contract(FACTORY_CONTRACT_ADDR, contract.abi, signer);
+const chubbyPops = new ethers.Contract(CONTRACT_ADDR, contract.abi, signer);
 
 async function main() {
     console.log('Minting a new token...');
 
     // mint one to contract owner address
-    const tx = await chubbyFactory.mintTo(0, signer.address);
+    const tx = await chubbyPops.mint(signer.address, 1);
     await tx.wait();
 
     console.log('Successfully minted token');
