@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { AlertService, PopupService } from 'ngx-slice-kit';
 import { ethers } from 'ethers';
-import { Subscription } from 'rxjs';
 import { Web3Service } from '../../services';
 import { environment } from '../../../../environments/environment';
 
@@ -27,7 +26,7 @@ const abi = [
         "stateMutability": "payable",
         "type": "function"
     }
-]
+];
 
 @Component({
     selector: 'app-get-tokens',
@@ -37,8 +36,6 @@ const abi = [
 export class GetTokensComponent implements OnInit, OnDestroy {
 
     @Output() resultEvent: EventEmitter<any> = new EventEmitter<any>();
-
-    sub?: Subscription;
 
     loading: boolean = false;
     tx: any;
@@ -58,7 +55,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
     }
 
     get txUrl(): string {
-        const networkPrefix = this.web3.network === `0x4` ? 'rinkeby.etherscan.io' : 'polygonscan.io';
+        const networkPrefix = this.web3.network === `0x4` ? 'rinkeby.etherscan.io' : 'polygonscan.com';
         return `https://${networkPrefix}/tx/${this.tx.hash}`;
     }
 
@@ -123,7 +120,6 @@ export class GetTokensComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.sub?.unsubscribe();
     }
 
 }
