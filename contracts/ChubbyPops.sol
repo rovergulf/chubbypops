@@ -14,6 +14,10 @@ contract ChubbyPops is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
 
     Counters.Counter private _tokenIds;
 
+    string private _baseUri;
+    string private _contractUri;
+    uint256 public _saleStartDate = 1640304000000; // 24 Dec 2021 00:00 GMT-00:00
+
     address payable treasurer; // withdraw to
     uint256 public tokenPrice = 40 ether; // 40 matic
 
@@ -24,16 +28,21 @@ contract ChubbyPops is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
     uint256 public airdropSupply = 40;
     bool public airdropDone = false;
 
-    constructor() ERC721("Chubby Pops", "CHIP") {
+    constructor(
+        string memory baseUri_,
+        string memory contractUri_
+    ) ERC721("Chubby Pops", "CHIP") {
+        _baseUri = baseUri_;
+        _contractUri = contractUri_;
         treasurer = payable(_msgSender());
     }
 
-    function _baseURI() internal pure override returns (string memory) {
-        return "https://api.rovergulf.net/nft/metadata/test-chubbies/";
+    function _baseURI() internal view override returns (string memory) {
+        return _baseUri;
     }
 
-    function contractURI() public pure returns (string memory) {
-        return "https://api.rovergulf.net/nft/metadata/test-chubbies";
+    function contractURI() public view returns (string memory) {
+        return _contractUri;
     }
 
     function airdrop(address[] memory recipients) public onlyOwner {
@@ -47,6 +56,7 @@ contract ChubbyPops is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
     }
 
     function mint(address to, uint256 amount) public payable {
+        require(block.timestamp > _saleStartDate, "Sale is not started yet");
         require(amount != 0, "Requested amount cannot be zero");
         require(amount <= maxMintsPerTx, "Requested amount is more than maximum");
         uint256 mintAmount = amount;
@@ -76,6 +86,14 @@ contract ChubbyPops is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
     function claimBalance() public onlyOwner {
         (bool success,) = treasurer.call{value : address(this).balance}("");
         require(success, "transfer failed");
+    }
+
+    function updateBaseUri(string memory newBaseUri_) public onlyOwner {
+        _baseUri = newBaseUri_;
+    }
+
+    function updateContractUri(string memory newContractUri_) public onlyOwner {
+        _contractUri = newContractUri_;
     }
 
     // The following functions are overrides required by Solidity.

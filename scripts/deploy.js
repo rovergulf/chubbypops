@@ -11,7 +11,10 @@ async function main() {
 
     const chicks = await ethers.getContractFactory('ChubbyPops');
 
-    const contract = await chicks.deploy();
+    const contract = await chicks.deploy(
+        'https://api.rovergulf.net/nft/metadata/chubby-pops/',
+        'https://api.rovergulf.net/nft/metadata/chubby-pops'
+    );
     await contract.deployed();
 
     console.log('Contract deployed to address: ', contract.address);
