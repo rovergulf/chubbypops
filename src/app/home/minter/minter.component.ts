@@ -27,15 +27,24 @@ export class MinterComponent implements OnInit {
             });
         } else {
             const isMumbai = this.web3.network === '0x4';
-            const isPolygon = this.web3.network === '0x137';
-            console.log(this.web3.network)
+            const isPolygon = this.web3.network === '0x89';
             if (isMumbai) {
                 this.dialog.showDialog(GetTokensComponent).subscribe({
                     next: (res: any) => {
-                        console.log(res);
+                        // ...
                     }
                 });
-            } else if (isPolygon) {} else {
+            } else if (isPolygon) {
+                this.dialog.showDialog(GetTokensComponent).subscribe({
+                    next: (res: any) => {
+                        // ...
+                    }
+                });
+                // this.alerts.error({
+                //     title: `Work in progress`,
+                //     message: `WIP: Sale is not started yet!`
+                // });
+            } else {
                 this.alerts.error({
                     title: `Work in progress`,
                     message: `WIP: Sale is not started yet!`

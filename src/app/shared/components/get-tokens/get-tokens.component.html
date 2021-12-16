@@ -8,8 +8,10 @@
         <p>Loading contract interfaces...</p>
     </section>
     <section *ngIf="contract">
-        <h3>Recipient:</h3>
-        <p>{{web3.currentAccount}}</p>
+        <div class="recipient">
+            <h3>Recipient:</h3>
+            <p>{{web3.currentAccount}}</p>
+        </div>
         <span class="spacer"></span>
         <div class="factory">
             <div class="factory-image">
@@ -26,7 +28,7 @@
                          (click)="increase()" [class.disabled]="canIncrease"/>
                 </div>
                 <span class="spacer"></span>
-                <h3>Ether:</h3>
+                <h3>{{web3.network === '0x4' ? 'Ether' : 'Matic'}}:</h3>
                 <sdk-input autocomplete="off" [(ngModel)]="ethValue"
                            size="full-width" [caption]="priceCaption()"></sdk-input>
                 <span class="spacer flex-grow-1"></span>

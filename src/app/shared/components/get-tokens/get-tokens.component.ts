@@ -44,7 +44,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
     tx: any;
     amount: number = 1;
     ethValue: number = 0;
-    contract: any;
+    contract: ethers.Contract;
 
     constructor(
         public web3: Web3Service,
@@ -81,7 +81,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
             this.tx = tx;
             this.loading = false;
         }).catch((err: any) => {
-            this.alerts.error({message: err.message || err});
+            this.alerts.error({message: err.message.substring(0, err.message.indexOf('('))});
             this.loading = false;
         });
     }

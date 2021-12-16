@@ -1,6 +1,6 @@
 {
   "name": "chubby-pops",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -14,7 +14,6 @@
   },
   "private": true,
   "dependencies": {
-    "@0x/subproviders": "^6.6.1",
     "@angular-eslint/schematics": "^13.0.1",
     "@angular/animations": "~13.0.3",
     "@angular/cdk": "^13.0.3",
@@ -28,17 +27,8 @@
     "@angular/router": "~13.0.3",
     "@angular/service-worker": "~13.0.3",
     "@nguniversal/express-engine": "^13.0.0",
-    "@nomiclabs/hardhat-ethers": "^2.0.2",
-    "@nomiclabs/hardhat-etherscan": "^2.1.6",
-    "@openzeppelin/contracts": "^4.3.2",
-    "@openzeppelin/contracts-upgradeable": "^4.3.3",
-    "ethers": "^5.4.7",
-    "express": "^4.15.2",
-    "hardhat": "^2.6.8",
-    "prom-client": "^14.0.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
-    "web3-provider-engine": "^16.0.3",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -50,15 +40,21 @@
     "@types/express": "^4.17.0",
     "@types/jasmine": "~3.10.2",
     "@types/node": "^16.11.6",
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-etherscan": "^2.1.6",
+    "@openzeppelin/contracts": "^4.4.1",
     "dotenv": "^10.0.0",
+    "ethers": "^5.4.7",
+    "express": "^4.15.2",
     "jasmine-core": "~3.10.1",
+    "hardhat": "^2.6.8",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ngx-slice-kit": "^0.12.0",
-    "opensea-js": "^1.2.2",
+    "prom-client": "^14.0.1",
     "typescript": "~4.4.4",
     "webpack-sources": "^3.2.1"
   }

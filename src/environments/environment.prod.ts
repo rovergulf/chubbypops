@@ -1,9 +1,8 @@
 export const environment = {
     production: true,
-    mintPrice: 40,
+    cdn: 'https://storage.googleapis.com/rovergulf/nft-gen/main',
     contracts: {
-        '0x4': '0xC5285BCc6e379e153119aAC4Ca46912e9D2859ba',
+        '0x4': '0x49915324c4EbCE742982F70f9d2DF1bB3dd15A7A',
         '0x89': '0x0000000000000000000000000000000000000000'
     },
-    cdn: 'https://storage.googleapis.com/rovergulf/nft-gen/main',
 };
