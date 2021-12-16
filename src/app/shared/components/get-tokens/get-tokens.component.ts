@@ -81,7 +81,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
             this.tx = tx;
             this.loading = false;
         }).catch((err: any) => {
-            this.alerts.error({message: err.message.substring(0, err.message.indexOf('('))});
+            this.alerts.error({message: err.message.substring(0, err.message.indexOf('(')) || err.message});
             this.loading = false;
         });
     }
