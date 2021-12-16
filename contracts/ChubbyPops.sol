@@ -16,7 +16,7 @@ contract ChubbyPops is ERC721, ERC721Enumerable, ERC721Burnable, Ownable {
 
     string private _baseUri;
     string private _contractUri;
-    uint256 public _saleStartDate = 1640304000000; // 24 Dec 2021 00:00 GMT-00:00
+    uint256 public _saleStartDate = 1640293200000; // 24 Dec 2021 00:00 GMT-00:00
 
     address payable treasurer; // withdraw to
     uint256 public tokenPrice = 40 ether; // 40 matic
