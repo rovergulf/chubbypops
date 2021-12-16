@@ -26,28 +26,18 @@ export class MinterComponent implements OnInit {
                 positionX: 'center',
             });
         } else {
-            const isMumbai = this.web3.network === '0x4';
+            const isRinkeby = this.web3.network === '0x4';
             const isPolygon = this.web3.network === '0x89';
-            if (isMumbai) {
+            if (isRinkeby || isPolygon) {
                 this.dialog.showDialog(GetTokensComponent).subscribe({
                     next: (res: any) => {
                         // ...
                     }
                 });
-            } else if (isPolygon) {
-                this.dialog.showDialog(GetTokensComponent).subscribe({
-                    next: (res: any) => {
-                        // ...
-                    }
-                });
-                // this.alerts.error({
-                //     title: `Work in progress`,
-                //     message: `WIP: Sale is not started yet!`
-                // });
             } else {
                 this.alerts.error({
-                    title: `Work in progress`,
-                    message: `WIP: Sale is not started yet!`
+                    title: `Wrong network`,
+                    message: `Select Polygon network in your MetaMask wallet`
                 });
             }
         }
