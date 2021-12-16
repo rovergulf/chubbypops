@@ -6,7 +6,7 @@ export const environment = {
     production: false,
     cdn: 'https://storage.googleapis.com/rovergulf/nft-gen/dev',
     contracts: {
-        '0x4': '0x49915324c4EbCE742982F70f9d2DF1bB3dd15A7A',
+        '0x4': '0x13520FDfCe784c5d0B85cf88ad1E37DdB2c2486a',
         '0x89': '0x0000000000000000000000000000000000000000'
     },
 };
