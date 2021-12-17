@@ -5,7 +5,7 @@ This repository contains public website and contract source code for [Chubby Pop
 
 ## Contract address
 
-0x0000000000000000000000000000000000000000
+[0x2279b871E86DA07D2317051ba8005a960992294f](https://polygonscan.com/address/0x2279b871e86da07d2317051ba8005a960992294f)
 
 ## More links
 
