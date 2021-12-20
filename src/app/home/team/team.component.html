@@ -2,7 +2,23 @@
     <h1>Chubby team</h1>
     <ul>
         <li *ngFor="let t of team">
-            <img [alt]="t.name" [src]="t.image"/>
+            <div class="info">
+                <div class="contacts">
+                    <ng-container *ngIf="t.twitter">
+                        <a target="_blank" [href]="t.twitter">Twitter</a>
+                    </ng-container>
+                    <ng-container *ngIf="t.dribble">
+                        <a target="_blank" [href]="t.dribble">Dribble</a>
+                    </ng-container>
+                    <ng-container *ngIf="t.email">
+                        <a target="_blank" [href]="t.email">Email</a>
+                    </ng-container>
+                    <ng-container *ngIf="t.telegram">
+                        <a target="_blank" [href]="t.telegram">Telegram</a>
+                    </ng-container>
+                </div>
+                <img [alt]="t.name" [src]="t.image" />
+            </div>
             <h3>{{t.name}}</h3>
             <p>{{t.role}}</p>
         </li>

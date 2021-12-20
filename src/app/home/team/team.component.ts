@@ -10,18 +10,20 @@ export class TeamComponent implements OnInit {
     team: any[] = [{
         name: 'Captain Disorder',
         role: 'Dev',
+        image: '/assets/images/team_dev.png',
         twitter: 'https://twitter.com/rzkmonster',
-        image: '/assets/images/team_dev.png'
+        email: 'mailto:d@rovergulf.net'
     }, {
         name: 'LunaMorrra',
         role: 'Design',
-        twitter: '',
-        image: '/assets/images/team_design.png'
+        image: '/assets/images/team_design.png',
+        twitter: 'https://twitter.com/monsterlurks'
     }, {
         name: 'Acdvlr',
         role: 'Spiritual Leader',
+        image: '/assets/images/team_leader.png',
         twitter: '',
-        image: '/assets/images/team_leader.png'
+        telegram: 'https://t.me/AmiranPolyanskiy'
     }];
 
     constructor() {
