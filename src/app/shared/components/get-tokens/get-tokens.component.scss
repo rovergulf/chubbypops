@@ -7,6 +7,7 @@ main {
     max-height: 90vh;
     border-radius: 40px;
     background: #0d2638;
+    overflow: hidden;
     @extend .flex-column;
     @extend .layout-start-stretch;
 
@@ -33,6 +34,8 @@ main {
         color: #fff;
         @extend .flex-column;
         @extend .layout-start-stretch;
+        overflow-y: auto;
+        overflow-x: hidden;
 
         .recipient {
             @extend .flex-column;
@@ -111,10 +114,6 @@ main {
         line-height: 40px;
     }
 
-    @media screen and (min-width: 720px) {
-        min-width: 560px;
-    }
-
     @media screen and (max-width: 960px) {
         border-radius: 20px;
 
@@ -148,4 +147,32 @@ main {
             }
         }
     }
+
+    @media screen and (max-width: 720px) {
+        border-radius: 12px;
+        min-width: auto;
+
+        section {
+            padding: 16px 12px 32px 12px;
+        }
+
+        h1 {
+            font-size: 28px;
+            line-height: 32px;
+        }
+
+        h3 {
+            @include fredoka;
+            font-size: 20px;
+            line-height: 32px;
+        }
+
+
+        p {
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+    }
+
 }
