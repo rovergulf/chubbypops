@@ -15,8 +15,8 @@ https://chubbypops.net
 ### Discord server
 https://discord.gg/GTaDN8ucQB
 
-### Marketplaces
-- TBD
+### OpenSea
+https://opensea.io/collection/chubby-pops
 
 ### Engineering team:  
 https://rovergulf.net
