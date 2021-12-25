@@ -30,10 +30,10 @@ main {
     }
 
     section {
-        padding: 20px 32px;
-        color: #fff;
         @extend .flex-column;
         @extend .layout-start-stretch;
+        padding: 20px 32px;
+        color: #fff;
         overflow-y: auto;
         overflow-x: hidden;
 

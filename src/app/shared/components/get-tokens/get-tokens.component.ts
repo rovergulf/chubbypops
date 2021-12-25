@@ -25,7 +25,20 @@ const abi = [
         "outputs": [],
         "stateMutability": "payable",
         "type": "function"
-    }
+    },
+    {
+        "inputs": [],
+        "name": "currentTokenId",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
 ];
 
 @Component({
@@ -42,6 +55,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
     amount: number = 1;
     ethValue: number = 0;
     contract: ethers.Contract;
+    currentTokenId: number = 0;
 
     constructor(
         public web3: Web3Service,
@@ -70,16 +84,30 @@ export class GetTokensComponent implements OnInit, OnDestroy {
 
         this.loading = true;
 
-        // this amount is added due not enough ether sent error, seems it not
-        // const ethValue = this.ethValue + 0.00000000000000001;
-        const value = ethers.utils.parseEther(this.ethValue.toString());
-        this.contractCall(this.web3.currentAccount, this.amount, {value}).then((tx: any) => {
-            this.alerts.success({message: `Tx '${tx.hash}' sent!`});
-            this.tx = tx;
-            this.loading = false;
-        }).catch((err: any) => {
-            this.alerts.error({message: err.message.substring(0, err.message.indexOf('(')) || err.message});
-            this.loading = false;
+        this.web3.getBalance(this.web3.currentAccount).subscribe({
+            next: (res: any) => {
+                const balance = ethers.BigNumber.from(res);
+                const value = ethers.utils.parseEther(this.ethValue.toString());
+                if (balance.lt(value)) {
+                    this.alerts.error({
+                        title: 'Insufficient balance',
+                        message: `Add more funds.`
+                    });
+                    return;
+                }
+
+                this.contractCall(this.web3.currentAccount, this.amount, {value}).then((tx: any) => {
+                    this.alerts.success({message: `Tx '${tx.hash}' sent!`});
+                    this.tx = tx;
+                    this.loading = false;
+                }).catch((err: any) => {
+                    this.alerts.error({message: err.message.substring(0, err.message.indexOf('(')) || err.message});
+                    this.loading = false;
+                });
+            },
+            error: (err: any) => {
+                this.alerts.error({message: err})
+            }
         });
     }
 
@@ -117,6 +145,13 @@ export class GetTokensComponent implements OnInit, OnDestroy {
         this.ethValue = this.web3.network === '0x4' ? 0.02 : 40;
         const addresses: any = environment.contracts;
         this.contract = new ethers.Contract(addresses[this.web3.network], abi, this.web3.signer);
+        this.contract.currentTokenId().then((res: any) => {
+            this.currentTokenId = ethers.BigNumber.from(res).toNumber();
+        }).catch((err: any) => {
+            this.alerts.error({
+                message: err.message || err
+            });
+        });
     }
 
     ngOnDestroy(): void {
