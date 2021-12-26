@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Web3Service } from '../../shared/services';
 import { AlertService, DialogService } from 'ngx-slice-kit';
 import { GetTokensComponent } from '../../shared/components/get-tokens/get-tokens.component';
+import { GtagService } from '../../shared/services/gtag.service';
 
 @Component({
     selector: 'app-minter',
@@ -15,6 +16,7 @@ export class MinterComponent implements OnInit {
         private web3: Web3Service,
         private alerts: AlertService,
         private dialog: DialogService,
+        private gtag: GtagService,
     ) {
     }
 
@@ -25,6 +27,7 @@ export class MinterComponent implements OnInit {
                 message: `Install MetaMask browser extension at first`,
                 positionX: 'center',
             });
+            this.gtag.trackEvent('mint', 'no_web3_provider');
         } else {
             const isRinkeby = this.web3.network === '0x4';
             const isPolygon = this.web3.network === '0x89';
@@ -34,11 +37,13 @@ export class MinterComponent implements OnInit {
                         // ...
                     }
                 });
+                this.gtag.trackEvent('mint', 'open_dialog');
             } else {
                 this.alerts.error({
                     title: `Wrong network`,
                     message: `Select Polygon network in your MetaMask wallet`
                 });
+                this.gtag.trackEvent('mint', 'wrong_network');
             }
         }
     }

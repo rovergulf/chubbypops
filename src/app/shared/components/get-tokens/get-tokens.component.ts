@@ -3,6 +3,7 @@ import { AlertService, PopupService } from 'ngx-slice-kit';
 import { ethers } from 'ethers';
 import { Web3Service } from '../../services';
 import { environment } from '../../../../environments/environment';
+import { GtagService } from '../../services/gtag.service';
 
 const singleFactoryItem = '415ea61b49bb6d5371083ba15f10e632ceb110712f162fcdccaab20c148511e2.gif';
 const multipleFactoryItem = 'ed4e3013c5ef67963a2235a994cab3fafa0ed52e93faf7cec202c0d633fe23c8.gif';
@@ -61,6 +62,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
         public web3: Web3Service,
         private popup: PopupService,
         private alerts: AlertService,
+        private gtag: GtagService,
     ) {
     }
 
@@ -93,6 +95,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
                         title: 'Insufficient balance',
                         message: `Add more funds.`
                     });
+                    this.gtag.trackEvent('mint', 'insufficient_funds');
                     return;
                 }
 
@@ -100,7 +103,9 @@ export class GetTokensComponent implements OnInit, OnDestroy {
                     this.alerts.success({message: `Tx '${tx.hash}' sent!`});
                     this.tx = tx;
                     this.loading = false;
+                    this.gtag.trackEvent('mint', 'tx_success');
                 }).catch((err: any) => {
+                    this.gtag.trackEvent('mint', 'tx_cancel');
                     this.alerts.error({message: err.message.substring(0, err.message.indexOf('(')) || err.message});
                     this.loading = false;
                 });

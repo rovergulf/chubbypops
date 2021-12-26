@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Web3Service } from './shared/services';
 import { AlertService } from 'ngx-slice-kit';
 import { isPlatformBrowser } from '@angular/common';
+import { GtagService } from './shared/services/gtag.service';
 
 @Component({
     selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
     constructor(
         @Inject(PLATFORM_ID) private platformId: any,
         public web3: Web3Service,
-        private alerts: AlertService
+        private alerts: AlertService,
+        private gtag: GtagService,
     ) {
     }
 
@@ -23,7 +25,7 @@ export class AppComponent implements OnInit {
                 this.web3.getAccounts().subscribe({
                     next: (res: any) => {
                         this.alerts.success({
-                            message: `You are logged to Chubby Pops!`,
+                            message: `You are authorized to Chubby Pops!`,
                             positionX: 'center',
                             positionY: 'bottom',
                         });
@@ -37,6 +39,8 @@ export class AppComponent implements OnInit {
                     }
                 });
             }
+
+            this.gtag.initGTag();
         }
     }
 
