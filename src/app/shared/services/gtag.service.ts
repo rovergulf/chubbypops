@@ -29,11 +29,7 @@ export class GtagService {
     }
 
     public trackEvent(action: string, value: string): void {
-        this.gtag('event', action, {
-            'event_category': 'category',
-            'event_label': 'label',
-            'value': value
-        });
+        this.gtag('event', action, {value});
     }
 
 }
