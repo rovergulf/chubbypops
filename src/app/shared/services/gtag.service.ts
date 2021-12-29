@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -29,7 +30,9 @@ export class GtagService {
     }
 
     public trackEvent(action: string, value: number = 1): void {
-        this.gtag('event', action, {value});
+        if (environment.production) {
+            this.gtag('event', action, {value});
+        }
     }
 
 }

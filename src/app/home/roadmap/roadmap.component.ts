@@ -22,13 +22,14 @@ export class RoadmapComponent implements OnInit {
         image: '/assets/images/10.svg',
         content: [
             'We will randomly airdrop Chubby Pops NFT to owners',
-            'Discord server will be updated and staff will be expanded'
+            'Discord server will be updated and staff will be expanded',
+            'Good deeds bank fills with 3 ETH',
         ],
     }, {
         point: '25%',
         image: '/assets/images/25.svg',
         content: [
-            'Good deeds bank fills with 3 ETH',
+            'Good deeds bank fills with 5 ETH',
             'Choosing a fund for donation by voting in discord and transfer of funds'
         ]
     }, {
