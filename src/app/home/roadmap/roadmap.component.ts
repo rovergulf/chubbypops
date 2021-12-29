@@ -39,6 +39,7 @@ export class RoadmapComponent implements OnInit {
             'Good deeds bank fills with 5 ETH',
             'Choosing a fund for donation by voting in discord and transfer of funds',
             'Drawing of 1 ETH among holders',
+            'List collection on rarity.tools',
         ]
     }, {
         point: '75%',
