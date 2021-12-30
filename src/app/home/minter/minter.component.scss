@@ -25,9 +25,11 @@ section {
         max-width: 580px;
 
         p {
-            font-size: 40px;
-            line-height: 60px;
-            margin-bottom: 24px;
+            font-size: 32px;
+            line-height: 48px;
+            span {
+                white-space: nowrap;
+            }
         }
 
         .mint-button {
@@ -57,8 +59,8 @@ section {
             }
 
             p {
-                font-size: 20px;
-                line-height: 32px;
+                font-size: 18px;
+                line-height: 24px;
             }
         }
     }
