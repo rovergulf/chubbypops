@@ -1,6 +1,6 @@
 {
   "name": "chubby-pops",
-  "version": "0.11.6",
+  "version": "0.12.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,11 +10,11 @@
     "dev:ssr": "ng run chubby-pops:serve-ssr",
     "serve:ssr": "node dist/chubby-pops/server/main.js",
     "build:ssr": "ng build --configuration production && ng run chubby-pops:server",
-    "prerender": "ng run chubby-pops:prerender"
+    "prerender": "ng run chubby-pops:prerender",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
-    "@angular-eslint/schematics": "^13.0.1",
     "@angular/animations": "~13.1.1",
     "@angular/cdk": "^13.1.1",
     "@angular/common": "~13.1.1",
@@ -27,15 +27,17 @@
     "@angular/router": "~13.1.1",
     "@angular/service-worker": "~13.1.1",
     "@nguniversal/express-engine": "^13.0.0",
-    "http-browserify": "^1.7.0",
-    "pino": "^7.6.2",
-    "rxjs": "~7.4.0",
+    "rxjs": "~7.5.1",
     "tslib": "^2.3.0",
-    "web3modal": "^1.9.4",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.1.2",
+    "@angular-eslint/builder": "13.0.1",
+    "@angular-eslint/eslint-plugin": "13.0.1",
+    "@angular-eslint/eslint-plugin-template": "13.0.1",
+    "@angular-eslint/schematics": "13.0.1",
+    "@angular-eslint/template-parser": "13.0.1",
     "@angular/cli": "~13.1.2",
     "@angular/compiler-cli": "~13.1.1",
     "@nguniversal/builders": "^11.2.1",
@@ -46,15 +48,19 @@
     "@types/express": "^4.17.0",
     "@types/jasmine": "~3.10.2",
     "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "5.3.0",
+    "@typescript-eslint/parser": "5.3.0",
     "@walletconnect/client": "^1.7.0",
     "@walletconnect/qrcode-modal": "^1.7.0",
     "@walletconnect/web3-provider": "^1.7.0",
     "assert": "^2.0.0",
     "crypto-browserify": "^3.12.0",
     "dotenv": "^10.0.0",
+    "eslint": "^8.2.0",
     "ethers": "^5.4.7",
     "express": "^4.15.2",
     "hardhat": "^2.6.8",
+    "http-browserify": "^1.7.0",
     "https-browserify": "^1.0.0",
     "jasmine-core": "~3.10.1",
     "karma": "~6.3.0",
@@ -68,7 +74,6 @@
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
     "typescript": "~4.4.4",
-    "web3": "^1.6.1",
     "webpack-sources": "^3.2.1"
   }
 }

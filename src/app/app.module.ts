@@ -14,7 +14,7 @@ import { HomeModule } from "./home/home.module";
         AppComponent
     ],
     imports: [
-        BrowserModule.withServerTransition({appId: 'serverApp'}),
+        BrowserModule.withServerTransition({appId: 'chubby-pops'}),
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
             // Register the ServiceWorker as soon as the app is stable

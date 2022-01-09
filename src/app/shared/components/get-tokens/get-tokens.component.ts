@@ -52,7 +52,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
 
     loading: boolean = false;
     tx: any;
-    isMetaMaskClient: boolean;
+    isWeb3Provider: boolean;
     buyer: string;
     signer: ethers.Signer;
     amount: number = 1;
@@ -80,11 +80,6 @@ export class GetTokensComponent implements OnInit, OnDestroy {
 
     async contractCall(recipient: string, amount: number, rewrite?: any) {
         return await this.contract.mint(recipient, amount, rewrite);
-    }
-
-    factoryLoaded(): boolean {
-        return this.isMetaMaskClient && !!this.currentTokenId ||
-            !!this.buyer;
     }
 
     mint(): void {
@@ -154,20 +149,32 @@ export class GetTokensComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.isMetaMaskClient = this.web3.eth && this.web3.currentAccount;
-        this.buyer = this.isMetaMaskClient ? this.web3.currentAccount : this.wc.currentAccount;
-        this.signer = this.isMetaMaskClient ? this.web3.signer : this.wc.signer;
+        this.isWeb3Provider = !!this.web3.eth && !!this.web3.currentAccount;
+        this.buyer = this.isWeb3Provider ? this.web3.currentAccount : this.wc.currentAccount;
+        this.signer = this.isWeb3Provider ? this.web3.signer : this.wc.signer;
         this.ethValue = this.web3.network === '0x4' ? 0.02 : 40;
-        const addresses: any = environment.contracts;
-        this.contract = new ethers.Contract(addresses[this.web3.network], abi, this.signer);
-        this.contract.currentTokenId().then((res: any) => {
-            this.currentTokenId = ethers.BigNumber.from(res).toNumber();
+        this.contract = new ethers.Contract(environment.contract, abi, this.signer);
+        this.signer.getChainId().then((n: any) => {
+            if (n != 137) {
+                this.alerts.error({
+                    title: 'Invalid network',
+                    message: 'Select Polygon as your current network'
+                });
+                this.gtag.trackEvent('mint_wrong_network');
+            } else {
+                this.contract.currentTokenId().then((res: any) => {
+                    this.currentTokenId = ethers.BigNumber.from(res).toNumber();
+                }).catch((err: any) => {
+                    this.alerts.error({
+                        message: err.message || err
+                    });
+                });
+            }
         }).catch((err: any) => {
             this.alerts.error({
                 message: err.message || err
             });
         });
-
     }
 
     ngOnDestroy(): void {

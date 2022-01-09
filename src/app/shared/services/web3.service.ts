@@ -7,7 +7,6 @@ import { ethers } from 'ethers';
 })
 export class Web3Service {
 
-    private $currentAccount: BehaviorSubject<string> = new BehaviorSubject<string>('');
     private $eth: BehaviorSubject<any> = new BehaviorSubject<any>(undefined)
 
     get eth(): any {
@@ -19,11 +18,7 @@ export class Web3Service {
     }
 
     public get currentAccount(): string {
-        return this.$currentAccount.getValue();
-    }
-
-    public set currentAccount(address: string) {
-        this.$currentAccount.next(address);
+        return this.eth.selectedAddress;
     }
 
     constructor() {
@@ -33,15 +28,15 @@ export class Web3Service {
         return this.eth.chainId;
     }
 
-    get provider(): any {
+    public get provider(): ethers.providers.Web3Provider {
         return this.newProvider(this.eth);
     }
 
-    get signer(): any {
-        return this.provider.getSigner(this.currentAccount);
+    public get signer(): ethers.Signer {
+        return this.provider.getSigner();
     }
 
-    public newProvider(provider: any = this.eth): any {
+    private newProvider(provider: any = this.eth): ethers.providers.Web3Provider {
         return new ethers.providers.Web3Provider(provider);
     }
 
@@ -49,7 +44,7 @@ export class Web3Service {
         // Checking if Web3 has been injected by the browser (MetaMask)
         if (typeof window.ethereum !== 'undefined') {
             this.eth = window.ethereum;
-            console.info('Successfully installed MetaMask provider');
+            console.info('Successfully installed Web3 provider');
         } else {
             console.warn('No supported web3 provider detected.');
         }

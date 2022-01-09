@@ -43,7 +43,7 @@ export class SelectWalletComponent implements OnInit, OnDestroy {
         });
     }
 
-    selectMetaMask(): void {
+    selectEth(): void {
         this.web3.checkAndInstallWeb3();
         if (this.web3.eth) {
             this.web3.getAccounts().subscribe({
