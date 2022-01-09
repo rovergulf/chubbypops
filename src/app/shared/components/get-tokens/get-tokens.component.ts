@@ -1,9 +1,8 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { AlertService, PopupService } from 'ngx-slice-kit';
 import { ethers } from 'ethers';
-import { Web3Service } from '../../services';
+import { GtagService, WalletConnectService, Web3Service } from '../../services';
 import { environment } from '../../../../environments/environment';
-import { GtagService } from '../../services/gtag.service';
 
 const singleFactoryItem = '415ea61b49bb6d5371083ba15f10e632ceb110712f162fcdccaab20c148511e2.gif';
 const multipleFactoryItem = 'ed4e3013c5ef67963a2235a994cab3fafa0ed52e93faf7cec202c0d633fe23c8.gif';
@@ -53,6 +52,9 @@ export class GetTokensComponent implements OnInit, OnDestroy {
 
     loading: boolean = false;
     tx: any;
+    isMetaMaskClient: boolean;
+    buyer: string;
+    signer: ethers.Signer;
     amount: number = 1;
     ethValue: number = 0;
     contract: ethers.Contract;
@@ -60,6 +62,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
 
     constructor(
         public web3: Web3Service,
+        public wc: WalletConnectService,
         private popup: PopupService,
         private alerts: AlertService,
         private gtag: GtagService,
@@ -79,6 +82,11 @@ export class GetTokensComponent implements OnInit, OnDestroy {
         return await this.contract.mint(recipient, amount, rewrite);
     }
 
+    factoryLoaded(): boolean {
+        return this.isMetaMaskClient && !!this.currentTokenId ||
+            !!this.buyer;
+    }
+
     mint(): void {
         if (this.loading) {
             return;
@@ -86,8 +94,8 @@ export class GetTokensComponent implements OnInit, OnDestroy {
 
         this.loading = true;
 
-        this.web3.getBalance(this.web3.currentAccount).subscribe({
-            next: (res: any) => {
+        this.signer.getBalance()
+            .then((res: any) => {
                 const balance = ethers.BigNumber.from(res);
                 const value = ethers.utils.parseEther(this.ethValue.toString());
                 if (balance.lt(value)) {
@@ -99,7 +107,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
                     return;
                 }
 
-                this.contractCall(this.web3.currentAccount, this.amount, {value}).then((tx: any) => {
+                this.contractCall(this.buyer, this.amount, {value}).then((tx: any) => {
                     this.alerts.success({message: `Tx '${tx.hash}' sent!`});
                     this.tx = tx;
                     this.loading = false;
@@ -109,11 +117,10 @@ export class GetTokensComponent implements OnInit, OnDestroy {
                     this.alerts.error({message: err.message.substring(0, err.message.indexOf('(')) || err.message});
                     this.loading = false;
                 });
-            },
-            error: (err: any) => {
+            })
+            .catch((err: any) => {
                 this.alerts.error({message: err})
-            }
-        });
+            });
     }
 
     get minEthValue(): number {
@@ -147,9 +154,12 @@ export class GetTokensComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.isMetaMaskClient = this.web3.eth && this.web3.currentAccount;
+        this.buyer = this.isMetaMaskClient ? this.web3.currentAccount : this.wc.currentAccount;
+        this.signer = this.isMetaMaskClient ? this.web3.signer : this.wc.signer;
         this.ethValue = this.web3.network === '0x4' ? 0.02 : 40;
         const addresses: any = environment.contracts;
-        this.contract = new ethers.Contract(addresses[this.web3.network], abi, this.web3.signer);
+        this.contract = new ethers.Contract(addresses[this.web3.network], abi, this.signer);
         this.contract.currentTokenId().then((res: any) => {
             this.currentTokenId = ethers.BigNumber.from(res).toNumber();
         }).catch((err: any) => {
@@ -157,6 +167,7 @@ export class GetTokensComponent implements OnInit, OnDestroy {
                 message: err.message || err
             });
         });
+
     }
 
     ngOnDestroy(): void {

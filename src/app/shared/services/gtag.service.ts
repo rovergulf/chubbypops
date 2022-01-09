@@ -22,8 +22,10 @@ export class GtagService {
 
     public initGTag(): void {
         if (window['gtag']) {
-            this.gtag = window['gtag'];
-            console.info('gtag manager installed');
+            if (environment.production) {
+                this.gtag = window['gtag'];
+                console.info('gtag manager installed');
+            }
         } else {
             console.info('No google tag manager detected');
         }
