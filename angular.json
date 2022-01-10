@@ -46,7 +46,8 @@
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json",
             "allowedCommonJsDependencies": [
-              "hash.js"
+              "hash.js",
+              "query-string"
             ]
           },
           "configurations": {

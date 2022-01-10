@@ -36,7 +36,7 @@ export class MinterComponent implements OnInit, OnDestroy {
                     const {
                         provider
                     } = res;
-                    if (provider === 'MetaMask') {
+                    if (provider === 'Ethereum') {
                         // window ethereum provider installed
                         this.mint();
                         this.gtag.trackEvent('provider_select_mm');

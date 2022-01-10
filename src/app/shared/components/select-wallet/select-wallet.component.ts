@@ -55,7 +55,7 @@ export class SelectWalletComponent implements OnInit, OnDestroy {
                         positionY: 'bottom',
                     });
                     this.resultEvent.emit({
-                        provider: 'MetaMask',
+                        provider: 'Ethereum',
                         currentAccount: res[0],
                     });
                 },
