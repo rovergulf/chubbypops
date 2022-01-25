@@ -21,9 +21,9 @@ export class RoadmapComponent implements OnInit {
         point: '10%',
         image: '/assets/images/10.svg',
         content: [
+            'Good deeds bank fills with 60% profits',
             'We will randomly airdrop Chubby Pops NFT to owners',
             'Discord server will be updated and staff will be expanded',
-            'Good deeds bank fills with 3 ETH',
         ],
     }, {
         point: '25%',
